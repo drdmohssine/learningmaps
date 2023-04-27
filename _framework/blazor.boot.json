@@ -8,10 +8,10 @@
   "resources": {
     "assembly": {
       "BlazorBootstrap.dll": "sha256-pffI3R2\/TI+xlILUka9uY9WlxtBuPUJ45\/G\/uKhAFLo=",
-      "LearningMaps.dll": "sha256-+Mea0OSGf8qmLjvRF73Yshc4HcRXrqJGCu9ByuodtRo=",
+      "LearningMaps.dll": "sha256-mZ4hMSjJh92HnJ5jHdefyavyO0iBOPzxiO4raUubg\/4=",
       "Microsoft.AspNetCore.Components.dll": "sha256-cXxc6DbNft9e7fB3W64DNLRcWlXBuHe84dK4SufMLzQ=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-dVImx4zPciam\/gSmDPvjaIQkRKzjALyXuiWY\/gVwEhs=",
-      "Microsoft.AspNetCore.Components.Web.dll": "sha256-1lEKISSzKK57RvXSqsP\/5bViF7WPXoYtlUvwS+yXwYo=",
+      "Microsoft.AspNetCore.Components.Web.dll": "sha256-fRS033jMss2iusFDQ1qnGpIvlR5ykX\/T27B6Yz4arkk=",
       "Microsoft.AspNetCore.Components.WebAssembly.dll": "sha256-UWi7YG9kN0ePxQRgpVGQFkleBvJ8e8p8GVxkS0SHit8=",
       "Microsoft.Extensions.Configuration.Abstractions.dll": "sha256-X\/f4fDl2cuIRXeWHhK\/f2UqQbFioD+RU4a4CEh0zrrQ=",
       "Microsoft.Extensions.Configuration.dll": "sha256-DBOKSPriP2JDxVbbWrLXyD3K4\/x3RBifNBWk\/q1I39M=",
