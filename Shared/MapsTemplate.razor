@@ -1,0 +1,20 @@
+﻿@typeparam TItem
+
+
+@foreach (var item in Items)
+{
+    @MapTemplate(item)
+
+}
+
+
+@code {
+
+    [Parameter]
+    public IReadOnlyList<TItem> Items { get; set; }
+
+    [Parameter]
+    public RenderFragment<TItem> MapTemplate { get; set; }
+
+
+}

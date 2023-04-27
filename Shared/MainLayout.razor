@@ -1,11 +1,71 @@
 ﻿@inherits LayoutComponentBase
+@using LearningMaps.Data;
+@inject MapsData MapsSvs
+@inject HttpClient Http
+
 
 <div class="page">
    
-
     <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
+        <div style="background-image: linear-gradient(to bottom right, #965a3e,#b97c7c,#cfa6b5,#e1d3e1,#ffffff);" class="d-flex flex-nowrap justify-content-center bg-white overflow-auto px-4">
+            <div style="display:inline-block; height:40px">
+                <Button  Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("default"); }'
+                        role="button">
+                    All
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("mathematics"); }'
+                        role="button">
+                    Mathematics
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("python"); }'
+                        role="button">
+                    Python
+                </Button>
+
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("machine learning"); }'
+                        role="button">
+                    Machine Learning
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("data science"); }'
+                        role="button">
+                    Data Science
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("english"); }'
+                        role="button">
+                    English
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("source control"); }'
+                        role="button">
+                    Source Control
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("scraping"); }'
+                        role="button">
+                    Scraping
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("web development"); }'
+                        role="button">
+                    Web Development
+                </Button>
+
+            </div>
         </div>
 
         <article class="content px-4">
@@ -13,3 +73,6 @@
         </article>
     </main>
 </div>
+
+
+                        
