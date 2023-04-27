@@ -1,4 +1,4 @@
-name: Deploy drdblaze to GitHub Pages
+name: Deploy learningmaps to GitHub Pages
 
 # Run workflow on every push to the master branch
 on:
@@ -26,11 +26,11 @@ jobs:
 
     # publishes Blazor project to the release-folder
     - name: Publish .NET 7 Project
-      run: dotnet publish drdblaze.csproj -c Release -o release --nologo
+      run: dotnet publish learningmaps.csproj -c Release -o release --nologo
       
       
-    # changes the base-tag in index.html from '/' to 'drdblaze' to match GitHub Pages repository subdirectory
-    - name: Change base-tag in index.html from / to drdblaze
+    # changes the base-tag in index.html from '/' to 'learningmaps' to match GitHub Pages repository subdirectory
+    - name: Change base-tag in index.html from / to learningmaps
       run: sed -i 's/<base href="\/" \/>/<base href="\/learningmaps\/" \/>/g' release/wwwroot/index.html
 
     # copy index.html to 404.html to serve the same file when a file is not found
