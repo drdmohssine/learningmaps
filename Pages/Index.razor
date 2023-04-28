@@ -39,6 +39,8 @@
 
     }
     
+    
+    
 </div>
 
 
@@ -56,17 +58,20 @@
             MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
 
         }
-        
+
         MapsSvs.OnChange += StateHasChanged;
     }
 
-  
+
 
 
     private void NavigateToMap(MapData map)
     {
         //MapsSvs.SelectedMap = map;
-        Navigation.NavigateTo($"/learningmaps/map/{map.map_ID}");
+        // Navigation.NavigateTo($"/learningmaps/map/{map.map_ID}");
+
+       
+        Navigation.NavigateTo(Navigation.BaseUri + $"learningmaps/map?id={map.map_ID}");
     }
 
 

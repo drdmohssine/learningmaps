@@ -1,5 +1,5 @@
-﻿@page "/map/{selectedMapId:int}"
-@page "/learningmaps/map/{selectedMapId:int}"
+﻿@page "/map"
+@page "/learningmaps/map"
 @using LearningMaps.Data;
 @inject IJSRuntime JSRuntime
 @inject MapsData MapsSvs
@@ -77,6 +77,7 @@
 @code {
 
     [Parameter]
+    [SupplyParameterFromQuery(Name = "id")]
     public int selectedMapId { get; set; }
 
     private bool showButtons { get; set; } = false;
@@ -98,6 +99,7 @@
     }
     protected override void OnParametersSet()
     {
+        
         MapsSvs.SelectedMap = MapsSvs.FiltredMapsData.Where(m => m.map_ID == selectedMapId).FirstOrDefault();
 
     }
