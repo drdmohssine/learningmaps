@@ -47,8 +47,6 @@
 @code{
 
 
-
-
     protected override async Task OnInitializedAsync()
     {
 
@@ -63,15 +61,13 @@
     }
 
 
-
-
     private void NavigateToMap(MapData map)
     {
         //MapsSvs.SelectedMap = map;
         // Navigation.NavigateTo($"/learningmaps/map/{map.map_ID}");
 
        
-        Navigation.NavigateTo(Navigation.BaseUri + $"learningmaps/map?id={map.map_ID}");
+        Navigation.NavigateTo(Navigation.BaseUri + $"map?id={map.map_ID}");
     }
 
 
