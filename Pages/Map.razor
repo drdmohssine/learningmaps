@@ -5,10 +5,13 @@
 @inject MapsData MapsSvs
 @inject HttpClient Http
 
+@if(MapsSvs.SelectedMap is not null)
+{
+    <HeadContent>
+        <meta name="og:description" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
+    </HeadContent>
 
-<HeadContent>
-    <meta name="og:description" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
-</HeadContent>
+}
 
 <div class="container-fluid  overflow-auto mb-2 position-relative shadow-sm ">
    
@@ -100,8 +103,8 @@
     }
     protected override void OnParametersSet()
     {
-        
         MapsSvs.SelectedMap = MapsSvs.FiltredMapsData.Where(m => m.map_ID == selectedMapId).FirstOrDefault();
+
 
     }
 
