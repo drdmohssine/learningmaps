@@ -7,8 +7,9 @@
 
 @if(MapsSvs.SelectedMap is not null)
 {
+    <PageTitle>Learning Maps</PageTitle>
     <HeadContent>
-        <meta name="og:description" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
+        <meta name="og:image" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
     </HeadContent>
 
 }
