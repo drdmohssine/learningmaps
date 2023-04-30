@@ -95,7 +95,7 @@
     {
         if (firstRender)
         {
-            _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "./jscode/libraryInterop.js");
+            _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", "../jscode/libraryInterop.js");
 
 
             Wdimension = await _MapJS.InvokeAsync<WindowDimension>("getWindowDimensions");
