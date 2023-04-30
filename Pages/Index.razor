@@ -7,6 +7,15 @@
 @inject MapsData MapsSvs
 
 <PageTitle>Learning Maps</PageTitle>
+@if(MapsSvs.SelectedMap is not null)
+{
+    <PageTitle>Learning Maps</PageTitle>
+    <HeadContent>
+        <meta property="og:url" content="@(Navigation.Uri)" />
+        <meta property="og:image" content="@(MapsSvs.FiltredMapsData[0].images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
+    </HeadContent>
+
+}
 
 <div class="overflow-auto d-flex flex-row justify-content-evenly flex-wrap bd-highlight mb-3">
     @if (MapsSvs.MapsDatas is not null)
