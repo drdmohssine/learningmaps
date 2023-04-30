@@ -4,12 +4,13 @@
 @inject IJSRuntime JSRuntime
 @inject MapsData MapsSvs
 @inject HttpClient Http
+@inject NavigationManager Navigation
 
 @if(MapsSvs.SelectedMap is not null)
 {
     <PageTitle>Learning Maps</PageTitle>
     <HeadContent>
-        <meta property="og:url" content=$"@(Navigation.BaseUr)map?id=@(MapsSvs.SelectedMap.map_ID)" />
+        <meta property="og:url" content="@(Navigation.Uri)" />
         <meta property="og:image" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
     </HeadContent>
 
