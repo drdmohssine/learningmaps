@@ -116,9 +116,10 @@
 
         if (MapsSvs.MapsDatas is null)
         {
+            await Task.Delay(200);
             MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
             MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
-
+            await Task.Delay(200);
         }
 
         MapsSvs.OnChange += StateHasChanged;
