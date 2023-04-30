@@ -9,7 +9,8 @@
 {
     <PageTitle>Learning Maps</PageTitle>
     <HeadContent>
-        <meta name="og:image" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
+        <meta property="og:url" content=$"@(Navigation.BaseUr)map?id=@(MapsSvs.SelectedMap.map_ID)" />
+        <meta property="og:image" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
     </HeadContent>
 
 }
