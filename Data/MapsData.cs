@@ -62,7 +62,10 @@ namespace LearningMaps.Data
 
     public class MapImages
     {
-        public string hashcode { get; set; }
+        public string hashcode { get; set; } 
+        public int Width { get; set; } = 200;
+        public int Height { get; set; } = 200;
+        public bool ZoomOut { get; set; }
         public string bigImg
         {
             get

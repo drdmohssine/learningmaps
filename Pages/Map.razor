@@ -16,57 +16,63 @@
 
 }
 
+ <MapsTemplate Items="MapsSvs.SelectedMap.images">
+        <MapTemplate Context="mapImg" >
+
 <div class="container-fluid  overflow-auto mb-2 position-relative shadow-sm ">
    
+            @if (showButtons)
+            {
+                <div class="position-absolute" style="display:inline-block;top:10px;left:20px; ">
+                    <Button Color="ButtonColor.Secondary" Class="me-0 p-0"
+                        Style="width:24px;height:24px;"
+                        @onclick="()=>{mapImg.Width +=50; mapImg.ZoomOut = mapImg.Width < 700 ? true : false;}"
+                            role="button">
+                        <Icon Name="IconName.ZoomIn" />
+                    </Button>
+                    <Button Color="ButtonColor.Secondary" Class="p-0 me-0" Disabled = "@mapImg.ZoomOut"
+                        Style="width:24px;height:24px;"
+                        @onclick="()=>{mapImg.Width -=50; mapImg.ZoomOut = mapImg.Width < 700 ? true : false;}"
+                            role="button">
+                        <Icon Name="IconName.ZoomOut" />
+                    </Button>
+                    <Button Color="ButtonColor.Secondary" Class="p-0"
+                        Style="width:24px;height:24px;"
+                        @onclick="()=>{mapImg.Width =initialWidth; mapImg.ZoomOut = mapImg.Width < 700 ? true : false; }"
+                            role="button">
+                        <Icon Name="IconName.Square" />
+                    </Button>
+                </div>
 
-    @if (showButtons)
-    {
-        <div class="position-absolute" style="display:inline-block;top:10px;left:20px; ">
-            <Button Color="ButtonColor.Secondary" Class="me-0 p-0"
-                Style="width:24px;height:24px;"
-                @onclick="()=>{Wdimension.Width +=50; }"
-                    role="button">
-                <Icon Name="IconName.ZoomIn" />
-            </Button>
-            <Button Color="ButtonColor.Secondary" Class="p-0 me-0"
-                Style="width:24px;height:24px;"
-                @onclick="()=>{Wdimension.Width -=50; }"
-                    role="button">
-                <Icon Name="IconName.ZoomOut" />
-            </Button>
-            <Button Color="ButtonColor.Secondary" Class="p-0"
-                Style="width:24px;height:24px;"
-                @onclick="()=>{Wdimension.Width =initialWidth; }"
-                    role="button">
-                <Icon Name="IconName.Square" />
-            </Button>
+            }
+
+            @if (MapsSvs.SelectedMap is not null)
+            {
+                <img style="width:@(mapImg.Width-100)px;height:auto" src="@(mapImg.bigImg)" class="mb-2 rounded" alt="learning map">
+
+            }
+
         </div>
+        </MapTemplate>
+    </MapsTemplate>
 
-    }
-   
-    @if (MapsSvs.SelectedMap is not null)
-    {
-        <img style="width:@(Wdimension.Width-100)px;height:auto" src="@(MapsSvs.SelectedMap.images[0].bigImg)" class=" rounded" alt="test">
-
-    }
    
  
 
-</div>
 
-<div class="row justify-content-center">
+<div class="row justify-content-center position-absolute bottom-0 start-50 translate-middle-x mb-3">
     @if (MapsSvs.SelectedMap is not null)
     {
-        <div class="col-auto">
-            <Button Class="shadow text-white" Style="background-color:darkslategray"
+        <div class="col-auto mb-1">
+            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold"
                 Type="ButtonType.Link" To="https://snotesapp.github.io/snoteseditor/" Target="Target.Blank"
                     role="button">
                 Open sNotes
             </Button>
 
         </div>
-        <div class="col-auto">
-            <Button Class="shadow text-white" Style="background-color:darkslategray"
+        <div class="col-auto mb-1">
+            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold"
                 Type="ButtonType.Link" To="@MapsSvs.SelectedMap.down_file"
                     role="button">
                 Download sNotes Map
@@ -95,20 +101,31 @@
     {
         if (firstRender)
         {
-           _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
+            _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
 
 
             Wdimension = await _MapJS.InvokeAsync<WindowDimension>("getWindowDimensions");
             showButtons = true;
-            StateHasChanged();
+            
             initialWidth = Wdimension.Width;
+
+            foreach (var img in MapsSvs.SelectedMap.images)
+            {
+                img.Width = Wdimension.Width;
+                img.Height = Wdimension.Height;
+            }
+            StateHasChanged();
         }
     }
     protected override void OnParametersSet()
     {
         MapsSvs.SelectedMap = MapsSvs.FiltredMapsData.Where(m => m.map_ID == selectedMapId).FirstOrDefault();
-
-
+        foreach (var img in MapsSvs.SelectedMap.images)
+        {
+            img.Width = Wdimension.Width;
+            img.Height = Wdimension.Height;
+        }
+        StateHasChanged();
     }
 
     protected override async Task OnInitializedAsync()
