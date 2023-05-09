@@ -8,18 +8,21 @@
 
 @if(MapsSvs.SelectedMap is not null)
 {
-    <PageTitle>Learning Maps</PageTitle>
+    <PageTitle>Interactive Learning Maps | Explore New Topics and Expand Your Knowledge</PageTitle>
     <HeadContent>
         <meta property="og:url" content="@(Navigation.Uri)" />
         <meta property="og:image" content="@(MapsSvs.SelectedMap.images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
+        <meta property="og:description" content="Explore new areas of knowledge with our learning maps. Our website offers a wide range of educational topics, presented in an intuitive and visually appealing format. Whether you're a student or lifelong learner, our maps provide a unique way to enhance your understanding of complex subjects. With engaging content and easy navigation, our learning maps make it easy to discover and explore new ideas. Start your journey of discovery today and unlock your full potential with our learning maps." />
+
     </HeadContent>
 
 }
 
+
  <MapsTemplate Items="MapsSvs.SelectedMap.images">
         <MapTemplate Context="mapImg" >
 
-<div class="container-fluid  overflow-auto mb-2 position-relative shadow-sm ">
+<div class="overflow-auto mb-2 position-relative shadow-sm " >
    
             @if (showButtons)
             {
@@ -27,19 +30,19 @@
                     <Button Color="ButtonColor.Secondary" Class="me-0 p-0"
                         Style="width:24px;height:24px;"
                         @onclick="()=>{mapImg.Width +=50; mapImg.ZoomOut = mapImg.Width < 700 ? true : false;}"
-                            role="button">
+                            >
                         <Icon Name="IconName.ZoomIn" />
                     </Button>
                     <Button Color="ButtonColor.Secondary" Class="p-0 me-0" Disabled = "@mapImg.ZoomOut"
                         Style="width:24px;height:24px;"
                         @onclick="()=>{mapImg.Width -=50; mapImg.ZoomOut = mapImg.Width < 700 ? true : false;}"
-                            role="button">
+                            >
                         <Icon Name="IconName.ZoomOut" />
                     </Button>
                     <Button Color="ButtonColor.Secondary" Class="p-0"
                         Style="width:24px;height:24px;"
                         @onclick="()=>{mapImg.Width =initialWidth; mapImg.ZoomOut = mapImg.Width < 700 ? true : false; }"
-                            role="button">
+                            >
                         <Icon Name="IconName.Square" />
                     </Button>
                 </div>
@@ -57,24 +60,24 @@
     </MapsTemplate>
 
    
- 
 
 
-<div class="row justify-content-center position-absolute bottom-0 start-50 translate-middle-x mb-3">
+<div class="row justify-content-center position-absolute bottom-0 start-50 translate-middle-x mb-3" >
     @if (MapsSvs.SelectedMap is not null)
     {
-        <div class="col-auto mb-1">
-            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold"
+        <div class="col-auto mb-1" >
+         
+            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
                 Type="ButtonType.Link" To="https://snotesapp.github.io/snoteseditor/" Target="Target.Blank"
-                    role="button">
+                    >
                 Open sNotes
             </Button>
 
         </div>
-        <div class="col-auto mb-1">
-            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold"
+        <div class="col-auto mb-1" >
+            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
                 Type="ButtonType.Link" To="@MapsSvs.SelectedMap.down_file"
-                    role="button">
+                    >
                 Download sNotes Map
             </Button>
         </div>
@@ -106,7 +109,7 @@
 
             Wdimension = await _MapJS.InvokeAsync<WindowDimension>("getWindowDimensions");
             showButtons = true;
-            
+
             initialWidth = Wdimension.Width;
 
             foreach (var img in MapsSvs.SelectedMap.images)
@@ -114,6 +117,7 @@
                 img.Width = Wdimension.Width;
                 img.Height = Wdimension.Height;
             }
+            
             StateHasChanged();
         }
     }
@@ -125,6 +129,8 @@
             img.Width = Wdimension.Width;
             img.Height = Wdimension.Height;
         }
+
+
         StateHasChanged();
     }
 

@@ -6,13 +6,14 @@
 @inject HttpClient Http
 @inject MapsData MapsSvs
 
-<PageTitle>Learning Maps</PageTitle>
+<PageTitle>Interactive Learning Maps | Explore New Topics and Expand Your Knowledge</PageTitle>
 @if (MapsSvs.FiltredMapsData is not null)
 {
-    <PageTitle>Learning Maps</PageTitle>
+    
     <HeadContent>
         <meta property="og:url" content="@(Navigation.Uri)" />
-        <meta property="og:image" content="@(MapsSvs.FiltredMapsData[0].images[0].thumbnail.Replace("m.jpg","l.jpg"))" />
+        <meta property="og:description" content="Explore new areas of knowledge with our learning maps. Our website offers a wide range of educational topics, presented in an intuitive and visually appealing format. Whether you're a student or lifelong learner, our maps provide a unique way to enhance your understanding of complex subjects. With engaging content and easy navigation, our learning maps make it easy to discover and explore new ideas. Start your journey of discovery today and unlock your full potential with our learning maps." />
+   
     </HeadContent>
 
 }
@@ -27,18 +28,16 @@
                 <div class="card-body text-white">
                         <p class="card-text">@(map.description)</p>
 
-                        <Button Class="shadow text-white" Style="background-color:darkslategray"
-                            Type="ButtonType.Link" To="https://snotesapp.github.io/snoteseditor/" Target="Target.Blank"
-                                role="button">
+                        <Button Class="shadow text-white mb-1" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
+                            Type="ButtonType.Link" To="https://snotesapp.github.io/snoteseditor/" Target="Target.Blank">
                             Open sNotes
                         </Button>
 
-
-                        <Button Class="shadow text-white" Style="background-color:darkslategray"
-                            Type="ButtonType.Link" To="@map.down_file"
-                                role="button">
+                        <Button Class="shadow text-white mb-1" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
+                            Type="ButtonType.Link" To="@map.down_file" >
                             Download sNotes Map
                         </Button>
+
 
 
                 </div>
