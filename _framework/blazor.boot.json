@@ -8,7 +8,7 @@
   "resources": {
     "assembly": {
       "BlazorBootstrap.dll": "sha256-pffI3R2\/TI+xlILUka9uY9WlxtBuPUJ45\/G\/uKhAFLo=",
-      "LearningMaps.dll": "sha256-PHaE\/Md6QPj0ZrB2ClJ7JDb+mbbncykBARQbVJqJmXY=",
+      "LearningMaps.dll": "sha256-EsZPXpc6KQErfK6hFSz8kHrpsh04jKbFTznlBhu3izc=",
       "Microsoft.AspNetCore.Components.dll": "sha256-67XCkFCFZDFisQZJ2xQ\/MHgSebXdTPc7IArxZeaC1Hg=",
       "Microsoft.AspNetCore.Components.Forms.dll": "sha256-dVImx4zPciam\/gSmDPvjaIQkRKzjALyXuiWY\/gVwEhs=",
       "Microsoft.AspNetCore.Components.Web.dll": "sha256-fRS033jMss2iusFDQ1qnGpIvlR5ykX\/T27B6Yz4arkk=",
