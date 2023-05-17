@@ -1,6 +1,7 @@
 [
   {
     "map_ID": "1",
+    "title": "Parts of Speech",
     "description": "Discover the fundamental building blocks of the English language with our comprehensive Parts of Speech learning map.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112054&authkey=ANVQcmuCkFpTHX4",
     "images": [
@@ -13,6 +14,7 @@
   },
   {
     "map_ID": "2",
+    "title": "English sentence",
     "description": "Explore the comprehensive English sentence learning map to enhance your grammar skills and master the art of constructing grammatically correct sentences. ",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112061&authkey=AID-pGtfCXXw62Q",
     "images": [
@@ -26,6 +28,7 @@
 
   {
     "map_ID": "3",
+    "title": "Git source control",
     "description": "Learn Git source control from beginner to advanced level with this comprehensive learning map, covering everything from basic concepts and commands to collaboration workflows and branching strategies.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112048&authkey=AJeUX4jD_qb3RU8",
     "images": [
@@ -38,6 +41,7 @@
   },
   {
     "map_ID": "4",
+    "title": "Python",
     "description": "Python learning map : a comprehensive guide to mastering the fundamental concepts and advanced techniques of Python programming language.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112057&authkey=AF9hsNxdM7B4yuQ",
     "images": [
@@ -50,6 +54,7 @@
   },
   {
     "map_ID": "5",
+    "title": "IO module",
     "description": "The IO module provides an interface between a computer and its external devices, allowing for the exchange of data and communication with the outside world.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112069&authkey=AH-j_bXOF7WUsao",
     "images": [
@@ -62,6 +67,7 @@
   },
   {
     "map_ID": "6",
+    "title": "Itertools",
     "description": "The Itertools module in Python provides a collection of tools to manipulate iterators efficiently and effectively.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112047&authkey=AGfO8nar8Hf8HYQ",
     "images": [
@@ -74,6 +80,7 @@
   },
   {
     "map_ID": "7",
+    "title": "OS module",
     "description": "Learn to interact with the operating system and manage files and directories in Python with the OS module, covering functions for file manipulation, directory traversal, environment variables, and more.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112052&authkey=AErVePAo2YoOAqQ",
     "images": [
@@ -86,6 +93,7 @@
   },
   {
     "map_ID": "8",
+    "title": "Socket module",
     "description": "The Socket module in Python allows for low-level network programming and provides a powerful foundation for building networked applications.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112062&authkey=AO0W3vt7fwlF2QY",
     "images": [
@@ -98,6 +106,7 @@
   },
   {
     "map_ID": "9",
+    "title": "Zipfile Module",
     "description": "The Zipfile Module in Python allows for the creation, reading, and modification of ZIP archives, making it a useful tool for file compression and organization.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112063&authkey=AC72rmQcgM7EZRo",
     "images": [
@@ -110,6 +119,7 @@
   },
   {
     "map_ID": "10",
+    "title": "Threading",
     "description": "Discover the world of concurrent programming in Python with our comprehensive threading learning map.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112056&authkey=AFL33pJhQGqpyIo",
     "images": [
@@ -122,6 +132,7 @@
   },
   {
     "map_ID": "11",
+    "title": "CSV module",
     "description": "The CSV module in Python allows for easy reading and writing of CSV files, making it a powerful tool for data processing and analysis.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112067&authkey=ANAw0LkG2oA027I",
     "images": [
@@ -134,6 +145,7 @@
   },
   {
     "map_ID": "12",
+    "title": "Json module",
     "description": "Learn how to effectively work with JSON data in Python using the built-in 'json' module for parsing, encoding, and manipulating JSON objects and files.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112046&authkey=ABZRdxqa3PXQyFU",
     "images": [
@@ -146,6 +158,7 @@
   },
   {
     "map_ID": "13",
+    "title": "Math module",
     "description": "Explore the power of mathematical operations in Python with the Math module, covering functions for trigonometry, logarithmic, exponential, statistical operations, and more.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112051&authkey=AD8W2PwcWAMZqoE",
     "images": [
@@ -158,6 +171,7 @@
   },
   {
     "map_ID": "14",
+    "title": "Random module",
     "description": "Explore the world of probability and statistics with Python's versatile random module - Learn to generate, manipulate and analyze random data with ease!",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112058&authkey=AI3yabAq_0W8Fhc",
     "images": [
@@ -170,6 +184,7 @@
   },
   {
     "map_ID": "15",
+    "title": "Requests module",
     "description": "Learn how to easily send HTTP requests and handle responses in Python using the popular Requests module.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112059&authkey=AHgg50uEyn2Ilmg",
     "images": [
@@ -182,6 +197,7 @@
   },
   {
     "map_ID": "16",
+    "title": "BeautifulSoup",
     "description": "Learn how to scrape and parse HTML and XML documents using BeautifulSoup, a powerful Python library for web scraping and data extraction.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112064&authkey=AKQ1n7poSBl5MBY",
     "images": [
@@ -194,6 +210,7 @@
   },
   {
     "map_ID": "17",
+    "title": "Scrapy",
     "description": "Scrapy Learning Map: Your guide to mastering web scraping and data extraction with Python's powerful framework.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112060&authkey=AMU9i34buWMp0pA",
     "images": [
@@ -206,6 +223,7 @@
   },
   {
     "map_ID": "18",
+    "title": "HTML",
     "description": "Learn the building blocks of the web with our HTML learning map - from basic syntax to advanced markup, create stunning websites with ease.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112068&authkey=APdil8mzHvM4OIU",
     "images": [
@@ -218,6 +236,7 @@
   },
   {
     "map_ID": "19",
+    "title": "CSS",
     "description": "Master the art of visual web design and create stunning websites with our comprehensive CSS learning map.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112066&authkey=APJaXKfK6yZ8Ymc",
     "images": [
@@ -230,6 +249,7 @@
   },
   {
     "map_ID": "20",
+    "title": "Linear Algebra",
     "description": "Discover the fundamental concepts and techniques of Linear Algebra, including vectors, matrices, and linear transformations, to solve real-world problems and unlock the power of data analysis.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112050&authkey=APFgaZpeP13duJ0",
     "images": [
@@ -242,6 +262,7 @@
   },
   {
     "map_ID": "21",
+    "title": "Calculus",
     "description": "Master the art of understanding and analyzing change with our comprehensive Calculus learning map.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112065&authkey=AEiDjGXraQlckJc",
     "images": [
@@ -254,6 +275,7 @@
   },
   {
     "map_ID": "22",
+    "title": "Probability and Statistics",
     "description": "Probability and Statistics learning map: Explore the fundamentals of data analysis, probability theory, and statistical inference to make sense of the world around us.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112055&authkey=ADsqOqk7thy6Azk",
     "images": [
@@ -266,6 +288,7 @@
   },
   {
     "map_ID": "23",
+    "title": "Pandas",
     "description": "Pandas learning map: Master data manipulation and analysis using the powerful Python library for efficient data wrangling, exploration, and visualization.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112053&authkey=AIodgcbXuWtyPAk",
     "images": [
@@ -291,6 +314,7 @@
 
   {
     "map_ID": "24",
+    "title": "Machine Learning",
     "description": "Explore the Machine Learning landscape with our comprehensive learning map, covering key concepts and techniques for building intelligent systems",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112049&authkey=ABn03LNVbfURibU",
     "images": [
@@ -303,6 +327,7 @@
   },
   {
     "map_ID": "25",
+    "title": "Flask",
     "description": "Embark on a journey of Flask mastery, unraveling the power of web development with elegance and efficiency.",
     "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112122&authkey=AEG88hDEClyIX2k",
     "images": [
