@@ -23,22 +23,34 @@
     {
         <MapsTemplate Items="@(MapsSvs.FiltredMapsData)">
         <MapTemplate Context="map">
-                <div class="card me-2 mb-2 text-center shadow-sm" style="width:400px; background-image: linear-gradient(to top, #965a3e,#b97c7c,#cfa6b5,#e1d3e1,#ffffff);">
-                <img  src="@(map.images[0].thumbnail)" @onclick="() => NavigateToMap(map)" class="card-img-top h-75" alt="Test">
-                <div class="card-body text-white">
+                <div class="card me-2 mb-2 text-center shadow-sm " style="width:400px; background-image: linear-gradient(to top, #965a3e,#b97c7c,#cfa6b5,#e1d3e1,#ffffff);">
+                    <div class="card-header">
+                        @(map.title)
+                    </div>
+
+             <div class="card-img-top">
+                       
+                        <img src="@(map.images[0].thumbnail)" @onclick="() => NavigateToMap(map)" class="card-img-top " style="height:255px">
+
+             </div>
+                   <div class="card-body text-white" >
                         <p class="card-text">@(map.description)</p>
 
-                        <Button Class="shadow text-white mb-1" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
+                   
+
+
+                </div>
+
+                <div class="card-footer">
+                        <Button Class="shadow text-light mb-1" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
                             Type="ButtonType.Link" To="https://snotesapp.github.io/snoteseditor/" Target="Target.Blank">
                             Open sNotes
                         </Button>
 
                         <Button Class="shadow text-white mb-1" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
-                            Type="ButtonType.Link" To="@map.down_file" >
+                            Type="ButtonType.Link" To="@map.down_file">
                             Download sNotes Map
                         </Button>
-
-
 
                 </div>
             </div>

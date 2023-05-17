@@ -54,6 +54,7 @@ namespace LearningMaps.Data
     public class MapData
     {
         public int map_ID { get; set; }
+        public string title { get; set; }
         public string description { get; set; }
         public string down_file { get; set; }
         public MapImages[] images { get; set; }
