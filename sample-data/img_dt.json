@@ -300,6 +300,18 @@
       }
     ],
     "tags": "default, machine learning"
+  },
+  {
+    "map_ID": "25",
+    "description": "Embark on a journey of Flask mastery, unraveling the power of web development with elegance and efficiency.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112122&authkey=AEG88hDEClyIX2k",
+    "images": [
+      {
+        "hashcode": "pqMCQgs"
+
+      }
+    ],
+    "tags": "default, python, web development"
   }
 
 ]
