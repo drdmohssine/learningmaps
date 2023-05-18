@@ -337,6 +337,19 @@
       }
     ],
     "tags": "default, python, web development"
+  },
+  {
+    "map_ID": "26",
+    "title": "Django",
+    "description": "Unleash the power of Django and learn how to build scalable web applications with ease and efficiency.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112129&authkey=ACyBgHNON1nfKKk",
+    "images": [
+      {
+        "hashcode": "JOaq0TU"
+
+      }
+    ],
+    "tags": "default, python, web development"
   }
 
 ]
