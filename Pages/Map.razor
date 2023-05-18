@@ -17,7 +17,6 @@
 
     </HeadContent>
 
-}
 
 
  <MapsTemplate Items="MapsSvs.SelectedMap.images">
@@ -50,11 +49,10 @@
 
             }
 
-            @if (MapsSvs.SelectedMap is not null)
-            {
+            
                 <img style="width:@(mapImg.Width-100)px;height:auto" src="@(mapImg.bigImg)" class="mb-2 rounded" alt="learning map">
 
-            }
+           
 
         </div>
         </MapTemplate>
@@ -62,8 +60,7 @@
 
 
 <div class="row justify-content-center position-absolute bottom-0 start-50 translate-middle-x mb-3" >
-    @if (MapsSvs.SelectedMap is not null)
-    {
+  
         <div class="col-auto mb-1" >
          
             <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
@@ -82,10 +79,11 @@
         </div>
 
       
-    }
+   
 
 
 </div>
+}
 
 
 @code {
@@ -103,46 +101,68 @@
     {
         if (firstRender)
         {
-            _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
+            try{
+                _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
 
 
-            Wdimension = await _MapJS.InvokeAsync<WindowDimension>("getWindowDimensions");
-            showButtons = true;
+                Wdimension = await _MapJS.InvokeAsync<WindowDimension>("getWindowDimensions");
+                showButtons = true;
 
-            initialWidth = Wdimension.Width;
+                initialWidth = Wdimension.Width;
 
+                foreach (var img in MapsSvs.SelectedMap.images)
+                {
+                    img.Width = Wdimension.Width;
+                    img.Height = Wdimension.Height;
+                }
+
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+        }
+    }
+    protected override void OnParametersSet()
+    {
+        try
+        {
+            MapsSvs.SelectedMap = MapsSvs.FiltredMapsData.Where(m => m.map_ID == selectedMapId).FirstOrDefault();
             foreach (var img in MapsSvs.SelectedMap.images)
             {
                 img.Width = Wdimension.Width;
                 img.Height = Wdimension.Height;
             }
-            
+
+
             StateHasChanged();
-        }
-    }
-    protected override void OnParametersSet()
-    {
-        MapsSvs.SelectedMap = MapsSvs.FiltredMapsData.Where(m => m.map_ID == selectedMapId).FirstOrDefault();
-        foreach (var img in MapsSvs.SelectedMap.images)
+        }catch(Exception ex)
         {
-            img.Width = Wdimension.Width;
-            img.Height = Wdimension.Height;
+            Console.WriteLine(ex.Message);
         }
 
-
-        StateHasChanged();
     }
 
     protected override async Task OnInitializedAsync()
     {
-
-        if (MapsSvs.MapsDatas is null)
+        try
         {
-           Http.BaseAddress = new Uri(Navigation.BaseUri);
-            MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
-            MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
-            
+            if (MapsSvs.MapsDatas is null)
+            {
+                Http.BaseAddress = new Uri(Navigation.BaseUri);
+                MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
+                MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
+
+            }
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+    
 
         MapsSvs.OnChange += StateHasChanged;
     }
