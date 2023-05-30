@@ -10,7 +10,9 @@
 
       }
     ],
-    "tags": "default, english"
+    "tags": "default, english",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Parts-of-speech-jsFile.json"
+
   },
   {
     "map_ID": "2",
@@ -23,7 +25,9 @@
 
       }
     ],
-    "tags": "default, english"
+    "tags": "default, english",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Sentences-jsFile.json"
+
   },
 
   {
@@ -37,7 +41,8 @@
 
       }
     ],
-    "tags": "default, source control"
+    "tags": "default, source control",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Learn-Git-jsFile.json"
   },
   {
     "map_ID": "4",
@@ -50,7 +55,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Python-jsFile.json"
   },
   {
     "map_ID": "5",
@@ -63,7 +69,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/IO-Module-jsFile.json"
   },
   {
     "map_ID": "6",
@@ -76,7 +83,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Itertools-Module-jsFile.json"
   },
   {
     "map_ID": "7",
@@ -89,7 +97,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/OS-Module-jsFile.json"
   },
   {
     "map_ID": "8",
@@ -102,7 +111,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Socket-Module-jsFile.json"
   },
   {
     "map_ID": "9",
@@ -115,7 +125,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Zipfile-Module-jsFile.json"
   },
   {
     "map_ID": "10",
@@ -128,7 +139,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Python-Threading-jsFile.json"
   },
   {
     "map_ID": "11",
@@ -141,7 +153,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/CSV-Module-jsFile.json"
   },
   {
     "map_ID": "12",
@@ -154,7 +167,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Json-Module-jsFile.json"
   },
   {
     "map_ID": "13",
@@ -167,7 +181,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Math-Module-jsFile.json"
   },
   {
     "map_ID": "14",
@@ -180,7 +195,8 @@
 
       }
     ],
-    "tags": "default, python"
+    "tags": "default, python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Random-jsFile.json"
   },
   {
     "map_ID": "15",
@@ -193,7 +209,8 @@
 
       }
     ],
-    "tags": "default, python,scraping"
+    "tags": "default, python,scraping",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Requests-Module-jsFile.json"
   },
   {
     "map_ID": "16",
@@ -206,7 +223,8 @@
 
       }
     ],
-    "tags": "default, python,scraping"
+    "tags": "default, python,scraping",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/BeautifulSoup-jsFile.json"
   },
   {
     "map_ID": "17",
@@ -219,7 +237,8 @@
 
       }
     ],
-    "tags": "default, python,scraping"
+    "tags": "default, python,scraping",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Scrapy-jsFile.json"
   },
   {
     "map_ID": "18",
@@ -232,7 +251,8 @@
 
       }
     ],
-    "tags": "default, web development,scraping"
+    "tags": "default, web development,scraping",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/HTML-jsFile.json"
   },
   {
     "map_ID": "19",
@@ -245,7 +265,8 @@
 
       }
     ],
-    "tags": "default, web development,scraping"
+    "tags": "default, web development,scraping",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/CSS-jsFile.json"
   },
   {
     "map_ID": "20",
@@ -258,7 +279,8 @@
 
       }
     ],
-    "tags": "default, mathematics,data science"
+    "tags": "default, mathematics,data science",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Linear-algebra--jsFile.json"
   },
   {
     "map_ID": "21",
@@ -271,7 +293,8 @@
 
       }
     ],
-    "tags": "default, mathematics,data science"
+    "tags": "default, mathematics,data science",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Calculus--jsFile.json"
   },
   {
     "map_ID": "22",
@@ -284,7 +307,8 @@
 
       }
     ],
-    "tags": "default, mathematics,data science"
+    "tags": "default, mathematics,data science",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Probability-and-Statistics-jsFile.json"
   },
   {
     "map_ID": "23",
@@ -309,7 +333,8 @@
 
       }
     ],
-    "tags": "default, data science"
+    "tags": "default, data science",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Pandas-jsFile.json"
   },
 
   {
@@ -323,7 +348,8 @@
 
       }
     ],
-    "tags": "default, machine learning"
+    "tags": "default, machine learning",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Machine-Learning-jsFile.json"
   },
   {
     "map_ID": "25",
@@ -336,7 +362,8 @@
 
       }
     ],
-    "tags": "default, python, web development"
+    "tags": "default, python, web development",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Flask-jsFile.json"
   },
   {
     "map_ID": "26",
@@ -349,7 +376,8 @@
 
       }
     ],
-    "tags": "default, python, web development"
+    "tags": "default, python, web development",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Django-jsFile.json"
   }
 
 ]

@@ -1,10 +1,15 @@
 ﻿@page "/map"
 @page "/learningmaps/map"
 @using LearningMaps.Data;
+@using System.Reflection;
+@using VisNetwork.Blazor
+@using VisNetwork.Blazor.Models;
 @inject IJSRuntime JSRuntime
 @inject MapsData MapsSvs
 @inject HttpClient Http
 @inject NavigationManager Navigation
+@inject NetData netData
+
 
 @if(MapsSvs.SelectedMap is not null)
 {
@@ -17,46 +22,33 @@
 
     </HeadContent>
 
-
-
- <MapsTemplate Items="MapsSvs.SelectedMap.images">
-        <MapTemplate Context="mapImg" >
-
-<div class="overflow-auto mb-2 position-relative shadow-sm " >
-   
-            @if (showButtons)
-            {
-                <div class="position-absolute" style="display:inline-block;top:10px;left:20px; ">
-                    <Button Color="ButtonColor.Secondary" Class="me-0 p-0"
-                        Style="width:24px;height:24px;"
-                        @onclick="()=>{mapImg.Width +=50; mapImg.ZoomOut = mapImg.Width < 700 ? true : false;}"
-                            >
-                        <Icon Name="IconName.ZoomIn" />
-                    </Button>
-                    <Button Color="ButtonColor.Secondary" Class="p-0 me-0" Disabled = "@mapImg.ZoomOut"
-                        Style="width:24px;height:24px;"
-                        @onclick="()=>{mapImg.Width -=50; mapImg.ZoomOut = mapImg.Width < 700 ? true : false;}"
-                            >
-                        <Icon Name="IconName.ZoomOut" />
-                    </Button>
-                    <Button Color="ButtonColor.Secondary" Class="p-0"
-                        Style="width:24px;height:24px;"
-                        @onclick="()=>{mapImg.Width =initialWidth; mapImg.ZoomOut = mapImg.Width < 700 ? true : false; }"
-                            >
-                        <Icon Name="IconName.Square" />
-                    </Button>
-                </div>
-
-            }
-
-            
-                <img style="width:@(mapImg.Width-100)px;height:auto" src="@(mapImg.bigImg)" class="mb-2 rounded" alt="learning map">
-
-           
-
+    
+    <div class="row justify-content-evenly ">
+        <div class="form-check col-sm-4 text-white ps-1  rounded-1 " style="background-color:darkslategray;width:200px;">
+            <input class="form-check-input ms-0" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked value="LR" @onchange="(ChangeEventArgs e) => SetDirection(e)">
+            <label class="form-check-label ms-1" for="flexRadioDefault1">
+                Left To Right
+            </label>
         </div>
-        </MapTemplate>
-    </MapsTemplate>
+        <div class="form-check col-sm-4 text-white ps-1  rounded-1 " style="background-color:darkslategray;width:200px;">
+            <input class="form-check-input ms-0" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="UD" @onchange="(ChangeEventArgs e) => SetDirection(e)">
+            <label class="form-check-label ms-1" for="flexRadioDefault2">
+                Up To Down
+            </label>
+        </div>
+
+        <div class="form-check col-sm-4 text-white ps-1  rounded-1 " style="background-color:darkslategray;width:200px;">
+            <input class="form-check-input ms-0" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Cluster" @onchange="(ChangeEventArgs e) => SetLayoutOption(e)">
+            <label class="form-check-label ms-1" for="flexRadioDefault2">
+                Clusters
+            </label>
+        </div>
+
+    </div>
+    <div class="row" >
+        <Network @ref="netData.network" Id="my-id" Options="netData.EditorConstructionOptions" OnDoubleClick="NetworkOnDoubleClick" Data="@netData.data" class="vis-network-container " style="background-color:inherit;height:1000px;width:2000px" />
+    </div>
+
 
 
 <div class="row justify-content-center position-absolute bottom-0 start-50 translate-middle-x mb-3" >
@@ -97,6 +89,12 @@
     private int initialWidth { get; set; }
     IJSObjectReference _MapJS;
     WindowDimension Wdimension = new();
+    Project graphproject;
+    int CurrentLevel;
+    HttpClient GrphhttpClient = new HttpClient();
+
+
+
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
@@ -116,6 +114,10 @@
                     img.Height = Wdimension.Height;
                 }
 
+
+
+
+
                 StateHasChanged();
             }
             catch (Exception ex)
@@ -123,8 +125,85 @@
 
             }
 
+            try
+            {
+                netData.data = new NetworkData();
+                netData.nodes = new List<Node>();
+                netData.edges = new List<Edge>();
+
+                GrphhttpClient.BaseAddress = new Uri("https://raw.githubusercontent.com/");
+                graphproject = await GrphhttpClient.GetFromJsonAsync<Project>(MapsSvs.SelectedMap.GraphUrl.Replace("https://raw.githubusercontent.com/", ""));
+
+                graphproject.Packets = graphproject.Packets.Select(pr =>
+                {
+                    pr.Parent = graphproject.Packets.FirstOrDefault(pd => pd.PacketID == pr.ParentID);
+                    return pr;
+                }).ToList();
+
+                Packet firstPacket = graphproject.Packets.FirstOrDefault(p => p.Parent is null);
+                if (firstPacket != null)
+                {
+                    Node firstNode = new Node("1", firstPacket.Title, 0, "box")
+                        {
+                            Shadow = new NodeShadowOption()
+                            {
+                                Enabled = true,
+                            },
+                            Font = $"14px arial {netData.fontColor}",
+                        };
+                    netData.nodes.Add(firstNode);
+
+                    foreach (Packet packet in graphproject.Packets.Where(p => p.ParentID == firstPacket.PacketID))
+                    {
+                        Node node = new Node()
+                            {
+                                Id = packet.PacketID.ToString(),
+                                Label = packet.Title,
+                                Level = packet.Level,
+                                Shape = "box",
+                                Shadow = new NodeShadowOption()
+                                {
+                                    Enabled = true,
+                                },
+                                Margin = new NodeMarginOption()
+                                {
+                                    Bottom = 10,
+                                    Left = 10,
+                                    Right = 10,
+                                    Top = 10
+                                },
+                                Font = $"14px arial {netData.fontColor}",
+                            };
+                        netData.nodes.Add(node);
+                        netData.edges.Add(new Edge(packet.ParentID.ToString(), packet.PacketID.ToString())
+                            {
+                                Smooth = new EdgeSmoothOptions() { Enabled = false },
+                                Arrows = new Arrows { To = new ArrowsOptions { Enabled = true, ScaleFactor = 1 } }
+                            });
+                    }
+                }
+
+                CurrentLevel = 2;
+
+                netData.data = new NetworkData
+                    {
+                        Edges = netData.edges,
+                        Nodes = netData.nodes
+                    };
+
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception appropriately
+            }
         }
+
+
+
+       
     }
+  
     protected override void OnParametersSet()
     {
         try
@@ -147,6 +226,7 @@
 
     protected override async Task OnInitializedAsync()
     {
+        
         try
         {
             if (MapsSvs.MapsDatas is null)
@@ -162,15 +242,193 @@
             Console.WriteLine(ex.Message);
         }
 
-    
+ 
 
+
+
+        netData.OnChange += StateHasChanged;
         MapsSvs.OnChange += StateHasChanged;
     }
+
+
+    private void OnDoubleClickEvent<T>(string name, T eventArg)
+    {
+        try
+        {
+
+
+
+            // Get the type of T
+            Type type = typeof(T);
+
+            // Get the property by name
+            PropertyInfo propertyInfo = type.GetProperty("Nodes");
+
+            if (propertyInfo != null)
+            {
+
+
+                // Get the value of the property from the object
+                object nodesValue = propertyInfo.GetValue(eventArg);
+
+                if (nodesValue is IEnumerable<object> nds && netData.nodes.Any())
+                {
+                    object firstNode = nds.First();
+
+                    int parentid = Convert.ToInt16(firstNode);
+
+                    List<Packet> packets = graphproject.Packets.Where(p => p.ParentID == parentid).ToList();
+
+                    Packet selectedPacket = graphproject.Packets.Where(p => p.PacketID == parentid).FirstOrDefault();
+
+                    if (packets.Count > 0)
+                    {
+
+
+                        foreach (Packet packet in packets)
+                        {
+
+                            if (packet.PacketID > netData.nodes.Count)
+                            {
+
+
+                                netData.nodes.Add(new Node(packet.PacketID.ToString(), packet.Title, packet.Level, "box")
+                                    {
+                                        Font = $"14px arial {netData.fontColor}",
+                                        Shadow = new NodeShadowOption()
+                                        {
+                                            Enabled = true,
+
+                                        },
+                                    });
+
+                                netData.edges.Add(new Edge(packet.ParentID.ToString(), packet.PacketID.ToString())
+                                    {
+
+                                        Smooth = new EdgeSmoothOptions() { Enabled = false },
+                                        Arrows = new Arrows
+                                        {
+                                            To = new ArrowsOptions { Enabled = true },
+
+                                        }
+                                    });
+                            }
+
+
+
+
+                        }
+
+
+
+                        netData.data = new NetworkData
+                            {
+                                Edges = netData.edges,
+                                Nodes = netData.nodes
+                            };
+
+
+
+                        CurrentLevel = packets[0].Level;
+
+                    }
+
+
+                    StateHasChanged();
+
+
+
+
+                }
+                else
+                {
+                    Console.WriteLine("No nodes found or property is not an enumerable.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Property not found.");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+
+    }
+
+    private void NetworkOnDoubleClick(ClickEvent eventArg) => OnDoubleClickEvent("doubleClick", eventArg);
+
+    private async Task SetDirection(ChangeEventArgs eventArgs)
+    {
+
+        await netData.network.SetOptions(new NetworkOptions()
+            {
+                Layout = new LayoutOptions()
+                {
+                    Hierarchical = new HierarchicalOptions()
+                    {
+                        Direction = eventArgs.Value.ToString(),
+                        SortMethod = "directed",
+                        ShakeTowards = "leaves",
+
+                        LevelSeparation = 300
+                    }
+                },
+
+                Physics = new PhysicsOptions()
+                {
+                    //Enabled = false
+                    BarnesHut = new BarnesHutOption()
+                    {
+
+                        AvoidOverlap = 1,
+                        Damping = 1,
+                    }
+                }
+            }
+
+        );
+
+
+        netData.NotifyStateChanged();
+    }
+
+    private async Task SetLayoutOption(ChangeEventArgs eventArgs)
+    {
+        await netData.network.SetOptions(new NetworkOptions()
+            {
+
+                Layout = new LayoutOptions()
+                {
+                    Hierarchical = new HierarchicalOptions()
+                    {
+                        Enabled = false
+                    }
+                },
+                Physics = new PhysicsOptions()
+                {
+                    //Enabled = false
+                    BarnesHut = new BarnesHutOption()
+                    {
+                        SpringLength = 200,
+                        AvoidOverlap = 1,
+                        Damping = 1,
+                    }
+                }
+            }
+
+        );
+
+
+    }
+
 
     public void Dispose()
     {
         MapsSvs.OnChange -= StateHasChanged;
-
+        netData.OnChange -= StateHasChanged;
     }
 
     public class WindowDimension
