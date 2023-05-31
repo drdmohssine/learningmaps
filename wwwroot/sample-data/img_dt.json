@@ -378,6 +378,20 @@
     ],
     "tags": "default, python, web development",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Django-jsFile.json"
+  },
+  {
+    "map_ID": "27",
+    "title": "JavaScript",
+    "description": "Unlock the potential of JavaScript and unleash your creativity in crafting dynamic and interactive web experiences.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112145&authkey=ABrjU-BoRFwGVUc",
+    "images": [
+      {
+        "hashcode": "8CRztKW"
+
+      }
+    ],
+    "tags": "default, web development",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/JavaScript-jsFile.json"
   }
 
 ]
