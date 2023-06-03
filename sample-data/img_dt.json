@@ -392,6 +392,20 @@
     ],
     "tags": "default, web development",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/JavaScript-jsFile.json"
+  },
+  {
+    "map_ID": "28",
+    "title": "TypeScript",
+    "description": "Discover the world of TypeScript and leverage its advantages including strong typing, advanced tooling, improved code maintainability, and seamless integration with JavaScript projects.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112146&authkey=AFMnEGnwuNJTCZ4",
+    "images": [
+      {
+        "hashcode": "8pqRSgA"
+
+      }
+    ],
+    "tags": "default, web development",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/TypeScript-jsFile.json"
   }
 
 ]
