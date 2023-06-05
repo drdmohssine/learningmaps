@@ -408,18 +408,18 @@
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/TypeScript-jsFile.json"
   },
   {
-    "map_ID": "29",
-    "title": "Angular",
-    "description": "Unlock the power of modern web development with Angular, and elevate your skills with its robust framework for building scalable, efficient, and dynamic web applications.",
-    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112154&authkey=AKnNh1X3Hk_6CA0",
+    "map_ID": "30",
+    "title": "React.js",
+    "description": "Discover the art of building cutting-edge web applications with React.js, where simplicity meets scalability.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112155&authkey=AIXlaEBntz0b8qE",
     "images": [
       {
-        "hashcode": "lI8gz5E"
+        "hashcode": "oDJQQf3"
 
       }
     ],
     "tags": "default, web development",
-    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Angular-jsFile.json"
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/React-js-jsFile.json"
   }
 
 ]
