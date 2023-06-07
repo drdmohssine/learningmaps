@@ -191,7 +191,7 @@
                         Nodes = netData.nodes
                     };
 
-                StateHasChanged();
+                netData.NotifyStateChanged();
             }
             catch (Exception ex)
             {
@@ -216,7 +216,7 @@
             }
 
 
-            StateHasChanged();
+            netData.NotifyStateChanged();
         }catch(Exception ex)
         {
             Console.WriteLine(ex.Message);
@@ -362,43 +362,88 @@
 
     private async Task SetDirection(ChangeEventArgs eventArgs)
     {
-
-        await netData.network.SetOptions(new NetworkOptions()
-            {
-                Layout = new LayoutOptions()
+        if(eventArgs.Value.ToString() == "UD")
+        {
+            await netData.network.SetOptions(new NetworkOptions()
                 {
-                    Hierarchical = new HierarchicalOptions()
+                    Layout = new LayoutOptions()
                     {
-                        Direction = eventArgs.Value.ToString(),
-                        SortMethod = "directed",
-                        ShakeTowards = "leaves",
-                        ParentCentralization = true,
-                        LevelSeparation = 300
-                    }
+                        Hierarchical = new HierarchicalOptions()
+                        {
+                            Direction = eventArgs.Value.ToString(),
+                            SortMethod = "directed",
+                            ShakeTowards = "leaves",
+                            ParentCentralization = true,
+                            LevelSeparation = 300
+                        }
 
-                },
-
-                Physics = new PhysicsOptions()
-                {
-                    //Enabled = false
-                    BarnesHut = new BarnesHutOption()
-                    {
-
-                        AvoidOverlap = 1,
-                        Damping = 1,
                     },
-                    HierarchicalRepulsion = new HierarchicalRepulsionOption()
+
+                    Physics = new PhysicsOptions()
                     {
-                        AvoidOverlap = 1,
-                        Damping = 1,
-                        NodeDistance = 120
+                        //Enabled = false
+                        BarnesHut = new BarnesHutOption()
+                        {
+
+                            AvoidOverlap = 1,
+                            Damping = 1,
+                        },
+
+                        HierarchicalRepulsion = new HierarchicalRepulsionOption()
+                        {
+                            AvoidOverlap = 1,
+                            Damping = 1,
+                            NodeDistance = 120
+                        }
                     }
+
                 }
-            }
 
-        );
+                );
 
+        }
+        else
+        {
+            await netData.network.SetOptions(new NetworkOptions()
+                {
+                    Layout = new LayoutOptions()
+                    {
+                        Hierarchical = new HierarchicalOptions()
+                        {
+                            Direction = eventArgs.Value.ToString(),
+                            SortMethod = "directed",
+                            ShakeTowards = "leaves",
+                            ParentCentralization = true,
+                            LevelSeparation = 300
+                        }
 
+                    },
+
+                    Physics = new PhysicsOptions()
+                    {
+                        //Enabled = false
+                        BarnesHut = new BarnesHutOption()
+                        {
+
+                            AvoidOverlap = 1,
+                            Damping = 1,
+                        },
+
+                        HierarchicalRepulsion = new HierarchicalRepulsionOption()
+                        {
+                            AvoidOverlap = 1,
+                            Damping = 1,
+                            NodeDistance = 60
+                        }
+                    }
+
+                }
+
+       );
+
+        }
+
+        
         netData.NotifyStateChanged();
     }
 
