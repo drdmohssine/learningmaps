@@ -280,59 +280,64 @@
                     List<Packet> packets = graphproject.Packets.Where(p => p.ParentID == parentid).ToList();
 
                     Packet selectedPacket = graphproject.Packets.Where(p => p.PacketID == parentid).FirstOrDefault();
+                    Packet firstChild = graphproject.Packets.Where(pr => pr.ParentID == selectedPacket.PacketID).FirstOrDefault();
 
-                    if (packets.Count > 0)
+                    if(firstChild is not null)
                     {
-
-
-                        foreach (Packet packet in packets)
+                        if (packets.Count > 0 && netData.nodes.Where(ni => ni.Id == firstChild.PacketID.ToString()).Count() == 0)
                         {
 
-                            if (packet.PacketID > netData.nodes.Count)
+
+                            foreach (Packet packet in packets)
                             {
 
+                                if (packet.PacketID > netData.nodes.Count)
+                                {
 
-                                netData.nodes.Add(new Node(packet.PacketID.ToString(), netData.SplitTextToFitWidth(packet.Title, 30), packet.Level, "box")
-                                    {
-                                        Font = $"14px arial {netData.fontColor}",
-                                        Shadow = new NodeShadowOption()
+
+                                    netData.nodes.Add(new Node(packet.PacketID.ToString(), netData.SplitTextToFitWidth(packet.Title, 30), packet.Level, "box")
                                         {
-                                            Enabled = true,
+                                            Font = $"14px arial {netData.fontColor}",
+                                            Shadow = new NodeShadowOption()
+                                            {
+                                                Enabled = true,
 
-                                        },
-                                    });
+                                            },
+                                        });
 
-                                netData.edges.Add(new Edge(packet.ParentID.ToString(), packet.PacketID.ToString())
-                                    {
-
-                                        Smooth = new EdgeSmoothOptions() { Enabled = false },
-                                        Arrows = new Arrows
+                                    netData.edges.Add(new Edge(packet.ParentID.ToString(), packet.PacketID.ToString())
                                         {
-                                            To = new ArrowsOptions { Enabled = true },
 
-                                        }
-                                    });
+                                            Smooth = new EdgeSmoothOptions() { Enabled = false },
+                                            Arrows = new Arrows
+                                            {
+                                                To = new ArrowsOptions { Enabled = true },
+
+                                            }
+                                        });
+                                }
+
+
+
+
                             }
 
 
 
+                            netData.data = new NetworkData
+                                {
+                                    Edges = netData.edges,
+                                    Nodes = netData.nodes
+                                };
+
+
+
+                            CurrentLevel = packets[0].Level;
 
                         }
 
-
-
-                        netData.data = new NetworkData
-                            {
-                                Edges = netData.edges,
-                                Nodes = netData.nodes
-                            };
-
-
-
-                        CurrentLevel = packets[0].Level;
-
                     }
-
+                    
 
                     StateHasChanged();
 
