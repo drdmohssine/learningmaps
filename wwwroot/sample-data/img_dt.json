@@ -48,15 +48,15 @@
     "map_ID": "4",
     "title": "Python",
     "description": "Python learning map : a comprehensive guide to mastering the fundamental concepts and advanced techniques of Python programming language.",
-    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112057&authkey=AF9hsNxdM7B4yuQ",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112156&authkey=APTuugWBvXO8sqg",
     "images": [
       {
-        "hashcode": "He1tkgI"
+        "hashcode": "ft8uh2d"
 
       }
     ],
     "tags": "default, python",
-    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Python-jsFile.json"
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/PythonV2-jsFile.json"
   },
   {
     "map_ID": "5",
@@ -434,6 +434,20 @@
     ],
     "tags": "default, web development",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/React-js-jsFile.json"
+  },
+  {
+    "map_ID": "31",
+    "title": "Vue.js",
+    "description": "Take advantage of Vue.js's efficient virtual DOM and optimized rendering algorithms to deliver lightning-fast user experiences that keep visitors engaged",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112157&authkey=AK9oMOKtAosNBKE",
+    "images": [
+      {
+        "hashcode": "RT3ch4C"
+
+      }
+    ],
+    "tags": "default, web development",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VueJS-jsFile.json.json"
   }
 
 ]
