@@ -5,6 +5,8 @@
 @inject NavigationManager Navigation
 @inject HttpClient Http
 @inject MapsData MapsSvs
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
+
 
 <PageTitle>Learning Maps | Explore New Topics and Expand Your Knowledge</PageTitle>
 @if (MapsSvs.FiltredMapsData is not null)
@@ -72,9 +74,24 @@
 
         if(MapsSvs.MapsDatas is null)
         {
-            MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
-            MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
 
+            MapConfig mapConfig = await Http.GetFromJsonAsync<MapConfig>("sample-data/mapConfig.json");
+            MapData[] mapsdata = await localStorage.GetItemAsync<MapData[]>("Maps");
+            MapConfig mapslocalconfig = await localStorage.GetItemAsync<MapConfig>("MapsConf");
+
+            if (mapsdata is null || mapslocalconfig is null || mapslocalconfig.MapVersion < mapConfig.MapVersion )
+            {
+                MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
+                await localStorage.SetItemAsync("Maps", MapsSvs.MapsDatas);
+                await localStorage.SetItemAsync("MapsConf", mapConfig);
+                
+            }
+            else
+            {
+                MapsSvs.MapsDatas = mapsdata;
+            }
+            MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
+            
         }
 
         MapsSvs.OnChange += StateHasChanged;

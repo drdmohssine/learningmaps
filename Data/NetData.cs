@@ -7,6 +7,9 @@ namespace LearningMaps.Data
 {
     public class NetData
     {
+        HttpClient GrphhttpClient;
+        Project graphproject;
+       
         public event Action OnChange;
 
         
@@ -135,7 +138,7 @@ namespace LearningMaps.Data
         }
 
 
-
+        
 
         public void NotifyStateChanged() => OnChange?.Invoke();
     }

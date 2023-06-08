@@ -72,6 +72,12 @@ namespace LearningMaps.Data
         
     }
 
+    public class MapConfig
+    {
+        public int MapVersion { get; set; }
+      
+    }
+
     public class MapImages
     {
         public string hashcode { get; set; } 

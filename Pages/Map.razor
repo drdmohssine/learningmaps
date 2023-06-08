@@ -9,7 +9,7 @@
 @inject HttpClient Http
 @inject NavigationManager Navigation
 @inject NetData netData
-
+@inject Blazored.LocalStorage.ILocalStorageService localStorage
 
 @if(MapsSvs.SelectedMap is not null)
 {
@@ -23,29 +23,32 @@
     </HeadContent>
 
     
-    <div class="row justify-content-evenly ">
-        <div class="form-check col-sm-4 text-white ps-1  rounded-1 " style="background-color:darkslategray;width:200px;">
+    <div class="row justify-content-center ">
+        <div class="form-check col-sm-3 text-white ps-1  rounded-1 mx-2" style="background-color:darkslategray;width:150px;">
             <input class="form-check-input ms-0" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked value="LR" @onchange="(ChangeEventArgs e) => SetDirection(e)">
             <label class="form-check-label ms-1" for="flexRadioDefault1">
                 Left To Right
             </label>
         </div>
-        <div class="form-check col-sm-4 text-white ps-1  rounded-1 " style="background-color:darkslategray;width:200px;">
+        <div class="form-check col-sm-3 text-white ps-1  rounded-1 me-2" style="background-color:darkslategray;width:150px;">
             <input class="form-check-input ms-0" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="UD" @onchange="(ChangeEventArgs e) => SetDirection(e)">
             <label class="form-check-label ms-1" for="flexRadioDefault2">
                 Up To Down
             </label>
         </div>
 
-        <div class="form-check col-sm-4 text-white ps-1  rounded-1 " style="background-color:darkslategray;width:200px;">
+        <div class="form-check col-sm-3 text-white ps-1  rounded-1 me-2" style="background-color:darkslategray;width:150px;">
             <input class="form-check-input ms-0" type="radio" name="flexRadioDefault" id="flexRadioDefault2" value="Cluster" @onchange="(ChangeEventArgs e) => SetLayoutOption(e)">
             <label class="form-check-label ms-1" for="flexRadioDefault2">
                 Clusters
             </label>
         </div>
 
+        <button type="button" class="btn col-sm-3 text-white ps-1 pt-0 rounded-1 " style="background-color:darkslategray;width:150px;height:25px" @onclick="RestGraph">
+              Reset
+        </button>
     </div>
-    <div class="row" >
+    <div class="row shadow" >
         <Network @ref="netData.network" Id="my-id" Options="netData.EditorConstructionOptions" OnDoubleClick="NetworkOnDoubleClick" Data="@netData.data" class="vis-network-container " style="background-color:inherit;height:1000px;width:2000px" />
     </div>
 
@@ -99,38 +102,12 @@
     {
         if (firstRender)
         {
-            try{
-                _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
-
-
-                Wdimension = await _MapJS.InvokeAsync<WindowDimension>("getWindowDimensions");
-                showButtons = true;
-
-                initialWidth = Wdimension.Width;
-
-                foreach (var img in MapsSvs.SelectedMap.images)
-                {
-                    img.Width = Wdimension.Width;
-                    img.Height = Wdimension.Height;
-                }
-
-
-
-
-
-                StateHasChanged();
-            }
-            catch (Exception ex)
-            {
-
-            }
-
             try
             {
                 netData.data = new NetworkData();
                 netData.nodes = new List<Node>();
                 netData.edges = new List<Edge>();
-
+                HttpClient GrphhttpClient = new HttpClient();
                 GrphhttpClient.BaseAddress = new Uri("https://raw.githubusercontent.com/");
                 graphproject = await GrphhttpClient.GetFromJsonAsync<Project>(MapsSvs.SelectedMap.GraphUrl.Replace("https://raw.githubusercontent.com/", ""));
 
@@ -197,6 +174,34 @@
             {
                 // Handle the exception appropriately
             }
+
+            try{
+                _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
+
+
+                Wdimension = await _MapJS.InvokeAsync<WindowDimension>("getWindowDimensions");
+                showButtons = true;
+
+                initialWidth = Wdimension.Width;
+
+                foreach (var img in MapsSvs.SelectedMap.images)
+                {
+                    img.Width = Wdimension.Width;
+                    img.Height = Wdimension.Height;
+                }
+
+
+
+
+
+                StateHasChanged();
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            
         }
 
 
@@ -229,10 +234,25 @@
 
         try
         {
+
             if (MapsSvs.MapsDatas is null)
             {
                 Http.BaseAddress = new Uri(Navigation.BaseUri);
-                MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
+                MapConfig mapConfig = await Http.GetFromJsonAsync<MapConfig>("sample-data/mapConfig.json");
+                MapData[] mapsdata = await localStorage.GetItemAsync<MapData[]>("Maps");
+                MapConfig mapslocalconfig = await localStorage.GetItemAsync<MapConfig>("MapsConf");
+
+                if (mapsdata is null || mapslocalconfig is null || mapslocalconfig.MapVersion < mapConfig.MapVersion)
+                {
+                    MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
+                    await localStorage.SetItemAsync("Maps", MapsSvs.MapsDatas);
+                    await localStorage.SetItemAsync("MapsConf", mapConfig);
+
+                }
+                else
+                {
+                    MapsSvs.MapsDatas = mapsdata;
+                }
                 MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
 
             }
@@ -250,6 +270,82 @@
         MapsSvs.OnChange += StateHasChanged;
     }
 
+    private async Task RestGraph()
+    {
+        try
+        {
+            netData.data = new NetworkData();
+            netData.nodes = new List<Node>();
+            netData.edges = new List<Edge>();
+            HttpClient GrphhttpClient = new HttpClient();
+            GrphhttpClient.BaseAddress = new Uri("https://raw.githubusercontent.com/");
+            graphproject = await GrphhttpClient.GetFromJsonAsync<Project>(MapsSvs.SelectedMap.GraphUrl.Replace("https://raw.githubusercontent.com/", ""));
+
+            graphproject.Packets = graphproject.Packets.Select(pr =>
+            {
+                pr.Parent = graphproject.Packets.FirstOrDefault(pd => pd.PacketID == pr.ParentID);
+                return pr;
+            }).ToList();
+
+            Packet firstPacket = graphproject.Packets.FirstOrDefault(p => p.Parent is null);
+            if (firstPacket != null)
+            {
+                Node firstNode = new Node("1", netData.SplitTextToFitWidth(firstPacket.Title, 30), 0, "box")
+                    {
+                        Shadow = new NodeShadowOption()
+                        {
+                            Enabled = true,
+                        },
+                        Font = $"14px arial {netData.fontColor}",
+                    };
+                netData.nodes.Add(firstNode);
+
+                foreach (Packet packet in graphproject.Packets.Where(p => p.ParentID == firstPacket.PacketID))
+                {
+                    Node node = new Node()
+                        {
+                            Id = packet.PacketID.ToString(),
+                            Label = netData.SplitTextToFitWidth(packet.Title, 30),
+                            Level = packet.Level,
+                            Shape = "box",
+                            Shadow = new NodeShadowOption()
+                            {
+                                Enabled = true,
+                            },
+                            Margin = new NodeMarginOption()
+                            {
+                                Bottom = 10,
+                                Left = 10,
+                                Right = 10,
+                                Top = 10
+                            },
+                            Font = $"14px arial {netData.fontColor}",
+                        };
+                    netData.nodes.Add(node);
+                    netData.edges.Add(new Edge(packet.ParentID.ToString(), packet.PacketID.ToString())
+                        {
+                            Smooth = new EdgeSmoothOptions() { Enabled = false },
+                            Arrows = new Arrows { To = new ArrowsOptions { Enabled = true, ScaleFactor = 1 } }
+                        });
+                }
+            }
+
+            CurrentLevel = 2;
+
+            netData.data = new NetworkData
+                {
+                    Edges = netData.edges,
+                    Nodes = netData.nodes
+                };
+
+            netData.NotifyStateChanged();
+        }
+        catch (Exception ex)
+        {
+            // Handle the exception appropriately
+        }
+
+    }
 
     private void OnDoubleClickEvent<T>(string name, T eventArg)
     {
