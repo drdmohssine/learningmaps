@@ -30,6 +30,7 @@ namespace LearningMaps.Data
             if (Tag == "default")
             {
                 FiltredMapsData = MapsDatas.Where(t => t.tags.Contains(Tag)).OrderByDescending(m => m.map_ID).ToList();
+               
 
             }
             else
@@ -38,6 +39,7 @@ namespace LearningMaps.Data
 
             }
 
+            PageFiltredMapsData = FiltredMapsData.Take(8).ToList();
             if (navigationManager.Uri.Contains("map"))
             {
                 navigationManager.NavigateTo(navigationManager.BaseUri);

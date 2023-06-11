@@ -48,8 +48,9 @@
               Reset
         </button>
     </div>
-    <div class="row shadow" style="width:@(Wdimension.Width)px; height:@(Wdimension.Height)px" >
-        <Network @ref="netData.network" Id="my-id" Options="netData.EditorConstructionOptions" OnDoubleClick="NetworkOnDoubleClick" Data="@netData.data" class="vis-network-container " style="background-color:inherit;height:inherit ;width:inherit" />
+    
+    <div class="row shadow" style="width:auto; height:@(Wdimension.Height)px" >
+        <Network @ref="netData.network" Id="my-id" Options="netData.EditorConstructionOptions" OnDoubleClick="NetworkOnDoubleClick" Data="@netData.data" class="vis-network-container " style="background-color:inherit;height:inherit ;width:100%" />
     </div>
 
 

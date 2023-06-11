@@ -23,7 +23,7 @@
 <div class="col ">
     @if (MapsSvs.MapsDatas is not null)
     {
-        <div class="d-flex flex-row justify-content-evenly flex-wrap bd-highlight mb-3">
+        <div class="d-flex flex-row justify-content-evenly flex-wrap bd-highlight  mb-3" >
             <MapsTemplate Items="@(MapsSvs.PageFiltredMapsData)">
         <MapTemplate Context="map">
                 <div class="card me-2 mb-2 text-center shadow-sm " style="width:400px; background-image: linear-gradient(to top, #965a3e,#b97c7c,#cfa6b5,#e1d3e1,#ffffff);">
@@ -62,16 +62,22 @@
        
         </div>
 
-        <div class="row ">
-            <Pagination PageChanged="OnPageChangedAsync" Alignment="Alignment.Center" ActivePageNumber="@currentPageNumber"
-                        TotalPages="@((int)Math.Ceiling((double)MapsSvs.FiltredMapsData.Count / 8))"
-                        DisplayPages="3"
-                        FirstLinkIcon="IconName.ChevronDoubleLeft"
-                        PreviousLinkIcon="IconName.ChevronLeft"
-                        NextLinkIcon="IconName.ChevronRight"
-                        LastLinkIcon="IconName.ChevronDoubleRight" />
-        </div>
+        @if (MapsSvs.FiltredMapsData.Count > 8)
+        {
+            <div class="row ">
+                <Pagination PageChanged="OnPageChangedAsync"
+                            Alignment="Alignment.Center"
+                            ActivePageNumber="@currentPageNumber"
+                            TotalPages="@((int)Math.Ceiling((double)MapsSvs.FiltredMapsData.Count / 8))"
+                            DisplayPages="3"
+                            FirstLinkIcon="IconName.ChevronDoubleLeft"
+                            PreviousLinkIcon="IconName.ChevronLeft"
+                            NextLinkIcon="IconName.ChevronRight"
+                            LastLinkIcon="IconName.ChevronDoubleRight" />
+            </div>
 
+        }
+        
     }
     
     
