@@ -44,32 +44,36 @@
             </label>
         </div>
 
-        <button type="button" class="btn col-sm-3 text-white ps-1 pt-0 rounded-1 " style="background-color:darkslategray;width:150px;height:25px" @onclick="RestGraph">
+        <button type="button" class="btn col-sm-3 text-white ps-1 pt-0 rounded-1 " style="background-color:darkslategray;width:150px;height:24px" @onclick="RestGraph">
               Reset
         </button>
     </div>
-    <div class="row shadow" >
-        <Network @ref="netData.network" Id="my-id" Options="netData.EditorConstructionOptions" OnDoubleClick="NetworkOnDoubleClick" Data="@netData.data" class="vis-network-container " style="background-color:inherit;height:1000px;width:2000px" />
+    <div class="row shadow" style="width:@(Wdimension.Width)px; height:@(Wdimension.Height)px" >
+        <Network @ref="netData.network" Id="my-id" Options="netData.EditorConstructionOptions" OnDoubleClick="NetworkOnDoubleClick" Data="@netData.data" class="vis-network-container " style="background-color:inherit;height:inherit ;width:inherit" />
     </div>
 
 
 
-<div class="row justify-content-center position-absolute bottom-0 start-50 translate-middle-x mb-3" >
+<div class="col justify-content-center position-absolute top-50 start-0 ms-4" >
   
-        <div class="col-auto mb-1" >
+        <div class="row-auto mb-1" title="Open sNotes">
          
-            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
+            <Button Class="shadow text-white" Style="background-color:darkslategray;"
                 Type="ButtonType.Link" To="https://snotesapp.github.io/snoteseditor/" Target="Target.Blank"
                     >
-                Open sNotes
+                    <Icon Name="IconName.Link"> 
+
+                    </Icon>
+               
             </Button>
 
         </div>
-        <div class="col-auto mb-1" >
-            <Button Class="shadow text-white" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
+        <div class="row-auto mb-1" title="Download sNotes map">
+            <Button Class="shadow text-white" Style="background-color:darkslategray;"
                 Type="ButtonType.Link" To="@MapsSvs.SelectedMap.down_file"
                     >
-                Download sNotes Map
+                <Icon Name="IconName.Download" />
+               
             </Button>
         </div>
 

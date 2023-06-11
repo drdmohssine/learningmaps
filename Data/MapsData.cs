@@ -10,10 +10,12 @@ namespace LearningMaps.Data
         public event Action OnChange;
 
         public MapData[]? MapsDatas;
-      
+        
+
         public MapData? SelectedMap;
 
         public List<MapData> FiltredMapsData { get; set; }
+        public List<MapData> PageFiltredMapsData { get; set; }
 
         private readonly NavigationManager navigationManager;
         public MapsData(NavigationManager navigationManager)

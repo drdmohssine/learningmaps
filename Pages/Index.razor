@@ -20,10 +20,11 @@
 
 }
 
-<div class="overflow-auto d-flex flex-row justify-content-evenly flex-wrap bd-highlight mb-3">
+<div class="col ">
     @if (MapsSvs.MapsDatas is not null)
     {
-        <MapsTemplate Items="@(MapsSvs.FiltredMapsData)">
+        <div class="d-flex flex-row justify-content-evenly flex-wrap bd-highlight mb-3">
+            <MapsTemplate Items="@(MapsSvs.PageFiltredMapsData)">
         <MapTemplate Context="map">
                 <div class="card me-2 mb-2 text-center shadow-sm " style="width:400px; background-image: linear-gradient(to top, #965a3e,#b97c7c,#cfa6b5,#e1d3e1,#ffffff);">
                     <div class="card-header">
@@ -58,6 +59,18 @@
             </div>
            </MapTemplate>
     </MapsTemplate>
+       
+        </div>
+
+        <div class="row ">
+            <Pagination PageChanged="OnPageChangedAsync" Alignment="Alignment.Center" ActivePageNumber="@currentPageNumber"
+                        TotalPages="@((int)Math.Ceiling((double)MapsSvs.FiltredMapsData.Count / 8))"
+                        DisplayPages="3"
+                        FirstLinkIcon="IconName.ChevronDoubleLeft"
+                        PreviousLinkIcon="IconName.ChevronLeft"
+                        NextLinkIcon="IconName.ChevronRight"
+                        LastLinkIcon="IconName.ChevronDoubleRight" />
+        </div>
 
     }
     
@@ -84,19 +97,27 @@
                 MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
                 await localStorage.SetItemAsync("Maps", MapsSvs.MapsDatas);
                 await localStorage.SetItemAsync("MapsConf", mapConfig);
-                
+
             }
             else
             {
                 MapsSvs.MapsDatas = mapsdata;
             }
             MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
-            
+            MapsSvs.PageFiltredMapsData = MapsSvs.FiltredMapsData.Take(8).ToList();
         }
 
         MapsSvs.OnChange += StateHasChanged;
     }
 
+
+    int currentPageNumber = 1;
+    private async Task OnPageChangedAsync(int newPageNumber)
+    {
+        await Task.Run(() => { currentPageNumber = newPageNumber; });
+        MapsSvs.PageFiltredMapsData = MapsSvs.FiltredMapsData.Skip((currentPageNumber - 1) * 8).Take(8).ToList();
+
+    }
 
     private void NavigateToMap(MapData map)
     {
