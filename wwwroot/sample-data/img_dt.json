@@ -55,7 +55,7 @@
 
       }
     ],
-    "tags": "default, python",
+    "tags": "default, python, back-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/PythonV2-jsFile.json"
   },
   {
@@ -251,7 +251,7 @@
 
       }
     ],
-    "tags": "default, web development,scraping",
+    "tags": "default, web development,scraping,front-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/HTML-jsFile.json"
   },
   {
@@ -265,7 +265,7 @@
 
       }
     ],
-    "tags": "default, web development,scraping",
+    "tags": "default, web development,scraping,front-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/CSS-jsFile.json"
   },
   {
@@ -362,7 +362,7 @@
 
       }
     ],
-    "tags": "default, python, web development",
+    "tags": "default, python, web development,back-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Flask-jsFile.json"
   },
   {
@@ -376,7 +376,7 @@
 
       }
     ],
-    "tags": "default, python, web development",
+    "tags": "default, python, web development,back-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Django-jsFile.json"
   },
   {
@@ -418,7 +418,7 @@
 
       }
     ],
-    "tags": "default, web development",
+    "tags": "default, web development,front-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Angular-jsFile.json"
   },
   {
@@ -432,7 +432,7 @@
 
       }
     ],
-    "tags": "default, web development",
+    "tags": "default, web development,front-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/React-js-jsFile.json"
   },
   {
@@ -446,8 +446,120 @@
 
       }
     ],
-    "tags": "default, web development",
+    "tags": "default, web development,front-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VueJS-jsFile.json"
+  },
+  {
+    "map_ID": "32",
+    "title": "Node.js",
+    "description": "Harness the power of JavaScript on the server-side with Node.js, enabling seamless full-stack development.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112166&authkey=ANUVKlUM8lAuTXU",
+    "images": [
+      {
+        "hashcode": "wmalWG2"
+
+      }
+    ],
+    "tags": "default, web development,back-end",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Node.js-jsFile.json"
+  },
+  {
+    "map_ID": "33",
+    "title": "PHP",
+    "description": "Dive into the world of dynamic web development with PHP, the language that opens doors to limitless possibilities.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112167&authkey=AB1FvwWPVrncEuE",
+    "images": [
+      {
+        "hashcode": "Skb2EpE"
+
+      }
+    ],
+    "tags": "default, web development,back-end",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/PHP-jsFile.json"
+  },
+  {
+    "map_ID": "34",
+    "title": "C++",
+    "description": "Unlock the power of low-level programming and high-performance computing with C++.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112170&authkey=ACCc8bcFFH4h5YY",
+    "images": [
+      {
+        "hashcode": "8o6tDpw"
+
+      }
+    ],
+    "tags": "default , back-end",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/C++-jsFile.json"
+  },
+  {
+    "map_ID": "35",
+    "title": "C#",
+    "description": "Discover the versatility of C# and create applications for desktop, web, mobile, and more.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112171&authkey=AHSvEXarRZOLP4E",
+    "images": [
+      {
+        "hashcode": "9JDLobc"
+
+      }
+    ],
+    "tags": "default, back-end",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/C%23-jsFile.json"
+  },
+  {
+    "map_ID": "36",
+    "title": "Java",
+    "description": "With Java, you can create everything from desktop applications to mobile apps and enterprise-level software.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112164&authkey=AJQThkAvTiVoS04",
+    "images": [
+      {
+        "hashcode": "3Et4MyT"
+
+      }
+    ],
+    "tags": "default, back-end",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Java-jsFile.json"
+  },
+  {
+    "map_ID": "37",
+    "title": "SQL",
+    "description": "Learning SQL empowers you to extract valuable insights from complex databases, making data-driven decisions effortless.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112169&authkey=APZcc5sQ1BjVodw",
+    "images": [
+      {
+        "hashcode": "fbHAOVr"
+
+      }
+    ],
+    "tags": "default, databases",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/SQL-jsFile.json"
+  },
+  {
+    "map_ID": "38",
+    "title": "MongoDB",
+    "description": "Mastering MongoDB empowers you to harness the power of flexible, scalable, and high-performance NoSQL databases.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112165&authkey=ALS0CI01L50s3xg",
+    "images": [
+      {
+        "hashcode": "dRFTLcs"
+
+      }
+    ],
+    "tags": "default, databases",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/MongoDB-jsFile.json"
+  },
+  {
+    "map_ID": "39",
+    "title": "Redis",
+    "description": "Unlock the power of high-performance data storage and retrieval with Redis, the lightning-fast in-memory database.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112168&authkey=AFrA3yU26XCwJdg",
+    "images": [
+      {
+        "hashcode": "GVhQiKK"
+
+      }
+    ],
+    "tags": "default, databases",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Redis-jsFile.json"
   }
 
 ]

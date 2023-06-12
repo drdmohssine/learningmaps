@@ -18,6 +18,30 @@
                 </Button>
                 <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
                         Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("web development"); }'
+                        role="button">
+                    Web Development
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("front-end"); }'
+                        role="button">
+                    Front-End
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("back-end"); }'
+                        role="button">
+                    Back-End
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
+                        @onclick='()=>{MapsSvs.FilterMaps("databases"); }'
+                        role="button">
+                    Databases
+                </Button>
+                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
+                        Style="width:auto;height:30px;background-color:darkslategray"
                         @onclick='()=>{MapsSvs.FilterMaps("mathematics"); }'
                         role="button">
                     Mathematics
@@ -59,12 +83,7 @@
                         role="button">
                     Scraping
                 </Button>
-                <Button Color="ButtonColor.Secondary" Class="text-white my-1 py-1"
-                        Style="width:auto;height:30px;background-color:darkslategray"
-                        @onclick='()=>{MapsSvs.FilterMaps("web development"); }'
-                        role="button">
-                    Web Development
-                </Button>
+              
 
             </div>
         </div>
