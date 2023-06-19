@@ -560,6 +560,21 @@
     ],
     "tags": "default, databases",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Redis-jsFile.json"
+  },
+  {
+    "map_ID": "40",
+    "title": "Figma",
+    "description": "Figma is a cloud-based design and prototyping tool used for creating user interfaces and interactive design experiences.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112180&authkey=ANWrJhfumBv0d80",
+    "images": [
+      {
+        "hashcode": "lbznC44"
+
+      }
+    ],
+    "tags": "default, web development,design tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Figma-jsFile.json"
   }
+
 
 ]
