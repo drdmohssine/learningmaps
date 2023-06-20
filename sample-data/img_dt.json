@@ -574,6 +574,20 @@
     ],
     "tags": "default, web development,design tools",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Figma-jsFile.json"
+  },
+  {
+    "map_ID": "41",
+    "title": "Canva",
+    "description": "Canva: The graphic design tool for everyone, from beginners to professionals.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112181&authkey=AEFAFrhqTNfGJ80",
+    "images": [
+      {
+        "hashcode": "ZUPSPPA"
+
+      }
+    ],
+    "tags": "default, design tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Canva-jsFile.json"
   }
 
 
