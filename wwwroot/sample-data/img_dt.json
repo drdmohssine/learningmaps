@@ -588,7 +588,22 @@
     ],
     "tags": "default, design tools",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Canva-jsFile.json"
+  },
+  {
+    "map_ID": "42",
+    "title": "Adobe XD",
+    "description": "Adobe XD is a powerful design and prototyping tool that allows designers to create interactive experiences and user interfaces for web and mobile applications.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112188&authkey=APdMt72_QDxPyMM",
+    "images": [
+      {
+        "hashcode": "JCmobfq"
+
+      }
+    ],
+    "tags": "default, web development, design tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Adobe-XD-jsFile.json"
   }
+
 
 
 ]
