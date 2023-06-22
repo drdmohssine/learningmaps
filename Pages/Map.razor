@@ -102,84 +102,147 @@
     HttpClient GrphhttpClient = new HttpClient();
 
 
+    protected override async Task OnInitializedAsync()
+    {
+
+        try
+        {
+
+            if (MapsSvs.MapsDatas is null)
+            {
+                Http.BaseAddress = new Uri(Navigation.BaseUri);
+                MapConfig mapConfig = await Http.GetFromJsonAsync<MapConfig>("sample-data/mapConfig.json");
+                MapData[] mapsdata = await localStorage.GetItemAsync<MapData[]>("Maps");
+                MapConfig mapslocalconfig = await localStorage.GetItemAsync<MapConfig>("MapsConf");
+
+                if (mapsdata is null || mapslocalconfig is null || mapslocalconfig.MapVersion < mapConfig.MapVersion)
+                {
+                    MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
+                    await localStorage.SetItemAsync("Maps", MapsSvs.MapsDatas);
+                    await localStorage.SetItemAsync("MapsConf", mapConfig);
+
+                }
+                else
+                {
+                    MapsSvs.MapsDatas = mapsdata;
+                }
+                MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
+
+               
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+
+
+
+
+
+        netData.OnChange += StateHasChanged;
+        MapsSvs.OnChange += StateHasChanged;
+    }
+
+    protected override async Task OnParametersSetAsync()
+    {
+        try
+        {
+            MapsSvs.SelectedMap = MapsSvs.FiltredMapsData.Where(m => m.map_ID == selectedMapId).FirstOrDefault();
+            foreach (var img in MapsSvs.SelectedMap.images)
+            {
+                img.Width = Wdimension.Width;
+                img.Height = Wdimension.Height;
+            }
+
+
+            netData.NotifyStateChanged();
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine(ex.Message);
+        }
+        
+        try
+        {
+            netData.data = new NetworkData();
+            netData.nodes = new List<Node>();
+            netData.edges = new List<Edge>();
+            HttpClient GrphhttpClient = new HttpClient();
+            GrphhttpClient.BaseAddress = new Uri("https://raw.githubusercontent.com/");
+            graphproject = await GrphhttpClient.GetFromJsonAsync<Project>(MapsSvs.SelectedMap.GraphUrl.Replace("https://raw.githubusercontent.com/", ""));
+
+            graphproject.Packets = graphproject.Packets.Select(pr =>
+            {
+                pr.Parent = graphproject.Packets.FirstOrDefault(pd => pd.PacketID == pr.ParentID);
+                return pr;
+            }).ToList();
+
+            Packet firstPacket = graphproject.Packets.FirstOrDefault(p => p.Parent is null);
+            if (firstPacket != null)
+            {
+                Node firstNode = new Node("1", netData.SplitTextToFitWidth(firstPacket.Title, 30), 0, "box")
+                    {
+                        Shadow = new NodeShadowOption()
+                        {
+                            Enabled = true,
+                        },
+                        Font = $"14px arial {netData.fontColor}",
+                    };
+                netData.nodes.Add(firstNode);
+
+                foreach (Packet packet in graphproject.Packets.Where(p => p.ParentID == firstPacket.PacketID))
+                {
+                    Node node = new Node()
+                        {
+                            Id = packet.PacketID.ToString(),
+                            Label = netData.SplitTextToFitWidth(packet.Title, 30),
+                            Level = packet.Level,
+                            Shape = "box",
+                            Shadow = new NodeShadowOption()
+                            {
+                                Enabled = true,
+                            },
+                            Margin = new NodeMarginOption()
+                            {
+                                Bottom = 10,
+                                Left = 10,
+                                Right = 10,
+                                Top = 10
+                            },
+                            Font = $"14px arial {netData.fontColor}",
+                        };
+                    netData.nodes.Add(node);
+                    netData.edges.Add(new Edge(packet.ParentID.ToString(), packet.PacketID.ToString())
+                        {
+                            Smooth = new EdgeSmoothOptions() { Enabled = false },
+                            Arrows = new Arrows { To = new ArrowsOptions { Enabled = true, ScaleFactor = 1 } }
+                        });
+                }
+            }
+
+            CurrentLevel = 2;
+
+            netData.data = new NetworkData
+                {
+                    Edges = netData.edges,
+                    Nodes = netData.nodes
+                };
+
+            netData.NotifyStateChanged();
+        }
+        catch (Exception ex)
+        {
+            // Handle the exception appropriately
+        }
+
+    }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
     {
         if (firstRender)
         {
-            try
-            {
-                netData.data = new NetworkData();
-                netData.nodes = new List<Node>();
-                netData.edges = new List<Edge>();
-                HttpClient GrphhttpClient = new HttpClient();
-                GrphhttpClient.BaseAddress = new Uri("https://raw.githubusercontent.com/");
-                graphproject = await GrphhttpClient.GetFromJsonAsync<Project>(MapsSvs.SelectedMap.GraphUrl.Replace("https://raw.githubusercontent.com/", ""));
-
-                graphproject.Packets = graphproject.Packets.Select(pr =>
-                {
-                    pr.Parent = graphproject.Packets.FirstOrDefault(pd => pd.PacketID == pr.ParentID);
-                    return pr;
-                }).ToList();
-
-                Packet firstPacket = graphproject.Packets.FirstOrDefault(p => p.Parent is null);
-                if (firstPacket != null)
-                {
-                    Node firstNode = new Node("1", netData.SplitTextToFitWidth(firstPacket.Title, 30), 0, "box")
-                        {
-                            Shadow = new NodeShadowOption()
-                            {
-                                Enabled = true,
-                            },
-                            Font = $"14px arial {netData.fontColor}",
-                        };
-                    netData.nodes.Add(firstNode);
-
-                    foreach (Packet packet in graphproject.Packets.Where(p => p.ParentID == firstPacket.PacketID))
-                    {
-                        Node node = new Node()
-                            {
-                                Id = packet.PacketID.ToString(),
-                                Label = netData.SplitTextToFitWidth(packet.Title, 30),
-                                Level = packet.Level,
-                                Shape = "box",
-                                Shadow = new NodeShadowOption()
-                                {
-                                    Enabled = true,
-                                },
-                                Margin = new NodeMarginOption()
-                                {
-                                    Bottom = 10,
-                                    Left = 10,
-                                    Right = 10,
-                                    Top = 10
-                                },
-                                Font = $"14px arial {netData.fontColor}",
-                            };
-                        netData.nodes.Add(node);
-                        netData.edges.Add(new Edge(packet.ParentID.ToString(), packet.PacketID.ToString())
-                            {
-                                Smooth = new EdgeSmoothOptions() { Enabled = false },
-                                Arrows = new Arrows { To = new ArrowsOptions { Enabled = true, ScaleFactor = 1 } }
-                            });
-                    }
-                }
-
-                CurrentLevel = 2;
-
-                netData.data = new NetworkData
-                    {
-                        Edges = netData.edges,
-                        Nodes = netData.nodes
-                    };
-
-                netData.NotifyStateChanged();
-            }
-            catch (Exception ex)
-            {
-                // Handle the exception appropriately
-            }
-
+          
             try{
                 _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
 
@@ -214,67 +277,8 @@
 
     }
 
-    protected override void OnParametersSet()
-    {
-        try
-        {
-            MapsSvs.SelectedMap = MapsSvs.FiltredMapsData.Where(m => m.map_ID == selectedMapId).FirstOrDefault();
-            foreach (var img in MapsSvs.SelectedMap.images)
-            {
-                img.Width = Wdimension.Width;
-                img.Height = Wdimension.Height;
-            }
-
-
-            netData.NotifyStateChanged();
-        }catch(Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-
-        try
-        {
-
-            if (MapsSvs.MapsDatas is null)
-            {
-                Http.BaseAddress = new Uri(Navigation.BaseUri);
-                MapConfig mapConfig = await Http.GetFromJsonAsync<MapConfig>("sample-data/mapConfig.json");
-                MapData[] mapsdata = await localStorage.GetItemAsync<MapData[]>("Maps");
-                MapConfig mapslocalconfig = await localStorage.GetItemAsync<MapConfig>("MapsConf");
-
-                if (mapsdata is null || mapslocalconfig is null || mapslocalconfig.MapVersion < mapConfig.MapVersion)
-                {
-                    MapsSvs.MapsDatas = await Http.GetFromJsonAsync<MapData[]>("sample-data/img_dt.json");
-                    await localStorage.SetItemAsync("Maps", MapsSvs.MapsDatas);
-                    await localStorage.SetItemAsync("MapsConf", mapConfig);
-
-                }
-                else
-                {
-                    MapsSvs.MapsDatas = mapsdata;
-                }
-                MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
-
-            }
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine(ex.Message);
-        }
-
-
-
-
-
-        netData.OnChange += StateHasChanged;
-        MapsSvs.OnChange += StateHasChanged;
-    }
-
+   
+   
     private async Task RestGraph()
     {
         try
