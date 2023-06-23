@@ -572,7 +572,7 @@
 
       }
     ],
-    "tags": "default, web development,design tools",
+    "tags": "default, web development,dev tools",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Figma-jsFile.json"
   },
   {
@@ -586,7 +586,7 @@
 
       }
     ],
-    "tags": "default, design tools",
+    "tags": "default, dev tools",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Canva-jsFile.json"
   },
   {
@@ -600,9 +600,52 @@
 
       }
     ],
-    "tags": "default, web development, design tools",
+    "tags": "default, web development, dev tools",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Adobe-XD-jsFile.json"
+  },
+  {
+    "map_ID": "43",
+    "title": "Visual Studio",
+    "description": "With its rich set of features, Visual Studio is widely used by developers for building a variety of applications, including desktop, web, mobile, and cloud-based solutions.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112189&authkey=ANoAkdY0B-zy2V8",
+    "images": [
+      {
+        "hashcode": "lCs36mK"
+
+      }
+    ],
+    "tags": "default,  dev tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Visual-Studio-jsFile.json"
+  },
+  {
+    "map_ID": "44",
+    "title": "VSCode",
+    "description": "Visual Studio Code, commonly known as VSCode, is a versatile and lightweight code editor loved by developers worldwide for its powerful features and intuitive user interface.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112190&authkey=AEzKLzlyC9BQH8Y",
+    "images": [
+      {
+        "hashcode": "RLBgImJ"
+
+      }
+    ],
+    "tags": "default, dev tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VSCode-jsFile.json"
+  },
+  {
+    "map_ID": "45",
+    "title": "Front-End VSCode Extentions",
+    "description": "Front-end VSCode extensions enhance the development experience by providing powerful tools for web and UI design, including live previews, code linting, and auto-completion.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112191&authkey=AIRx1QD5XPVxoks",
+    "images": [
+      {
+        "hashcode": "9FZQSD4"
+
+      }
+    ],
+    "tags": "default, dev tools,front-end",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Front-End-VSCode-Extentions-jsFile.json"
   }
+
 
 
 
