@@ -644,6 +644,20 @@
     ],
     "tags": "default, dev tools,front-end",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Front-End-VSCode-Extentions-jsFile.json"
+  },
+  {
+    "map_ID": "46",
+    "title": "VSCode Extentions For Python",
+    "description": "Python developers can enhance their coding experience with VSCode extensions that offer features like code linting, debugging support, and IntelliSense for efficient and error-free development.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112197&authkey=!AEx6jtQAA36LBq0",
+    "images": [
+      {
+        "hashcode": "QvBjFy3"
+
+      }
+    ],
+    "tags": "default, dev tools,python",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VSCode-Extentions-For-Python-Dev-jsFile.json"
   }
 
 
