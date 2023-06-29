@@ -658,7 +658,53 @@
     ],
     "tags": "default, dev tools,python",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VSCode-Extentions-For-Python-Dev-jsFile.json"
+  },
+  {
+    "map_ID": "47",
+    "title": "VSCode Extentions For C++",
+    "description": "Visual Studio Code offers a wide range of C++ extensions, empowering developers with features like intelligent code completion, debugging tools, and seamless integration with build systems",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112200&authkey=AJcaHO0jfdvYDsk",
+    "images": [
+      {
+        "hashcode": "mbqPKaX"
+
+      }
+    ],
+    "tags": "default, dev tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Visual-Studio-Code-extensions-for-Cpp-jsFile.json"
+  },
+  {
+    "map_ID": "48",
+    "title": "VSCode Extentions For C#",
+    "description": "Expand your C# development capabilities with extensions that offer automatic code formatting, Git integration, and unit testing support, all within Visual Studio Code.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112198&authkey=AM2AIFmSjw5s9is",
+    "images": [
+      {
+        "hashcode": "i0IOWzZ"
+
+      }
+    ],
+    "tags": "default, dev tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VSCode-extensions-for-C-Sharpe-jsFile.json"
+  },
+  {
+    "map_ID": "49",
+    "title": "VSCode extensions for Java",
+    "description": "With a multitude of Java extensions available, Visual Studio Code becomes a powerful Java development environment, offering features like intelligent code completion, integrated debugging, and seamless integration with popular build systems, amplifying productivity and enabling efficient Java coding.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112199&authkey=AJPutS9vpO6UBM4",
+    "images": [
+      {
+        "hashcode": "qp3hcrG"
+
+      }
+    ],
+    "tags": "default, dev tools",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VSCode-extensions-for-Java-jsFile.json"
   }
+
+
+
+
 
 
 
