@@ -713,7 +713,7 @@
       }
     ],
     "tags": "default, cicd",
-    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/"
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Jenkins-jsFile.json"
   }
 
 
