@@ -41,7 +41,7 @@
 
       }
     ],
-    "tags": "default, source control",
+    "tags": "default, cicd",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Learn-Git-jsFile.json"
   },
   {
@@ -700,7 +700,22 @@
     ],
     "tags": "default, dev tools",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/VSCode-extensions-for-Java-jsFile.json"
+  },
+  {
+    "map_ID": "50",
+    "title": "Jenkins",
+    "description": "With its extensive plugin ecosystem and flexible pipeline capabilities, Jenkins empowers teams to automate their CI/CD pipelines and streamline the software delivery process.",
+    "down_file": "https://onedrive.live.com/download?cid=FDA15E5C59A361A5&resid=FDA15E5C59A361A5%2112201&authkey=!AEYusnOtyjKJWpU",
+    "images": [
+      {
+        "hashcode": "Hf6YxnK"
+
+      }
+    ],
+    "tags": "default, cicd",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/"
   }
+
 
 
 
