@@ -714,7 +714,22 @@
     ],
     "tags": "default, cicd",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Jenkins-jsFile.json"
+  },
+  {
+    "map_ID": "51",
+    "title": "Azure DevOps",
+    "description": "With Azure DevOps, organizations can streamline their software development lifecycle, enabling collaboration, version control, continuous integration and delivery, and automated testing.",
+    "down_file": "https://onedrive.live.com/download?resid=FDA15E5C59A361A5%2112202&authkey=!AHXZHUbGMpMeaJ8",
+    "images": [
+      {
+        "hashcode": "LZeTGEi"
+
+      }
+    ],
+    "tags": "default, cicd",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Azure-DevOps-jsFile.json"
   }
+
 
 
 
