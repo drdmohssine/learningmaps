@@ -50,10 +50,13 @@
                             Open sNotes
                         </Button>
 
-                        <Button Class="shadow text-white mb-1" Style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;"
-                            Type="ButtonType.Link" To="@map.down_file">
-                            Download sNotes Map
-                        </Button>
+
+                        <a class="btn shadow text-white mb-1" 
+                            style="background-color:darkslategray;width:170px;font-size:small;font-weight:bold;" 
+                            href="@(map.down_file)" 
+                            role="button">
+                                Download sNotes Map                    
+                        </a>
 
                 </div>
             </div>
@@ -123,6 +126,7 @@
         await Task.Run(() => { currentPageNumber = newPageNumber; });
         MapsSvs.PageFiltredMapsData = MapsSvs.FiltredMapsData.Skip((currentPageNumber - 1) * 8).Take(8).ToList();
 
+        StateHasChanged();
     }
 
     private void NavigateToMap(MapData map)
