@@ -3,6 +3,51 @@
 /* /Pages/Index.razor.rz.scp.css */
 body[b-q1wbf3ukxu] {
 }
+/* /Pages/Map.razor.rz.scp.css */
+body[b-haxcgtpc63] {
+}
+
+/* Tooltip container */
+.sn-tooltip[b-haxcgtpc63] {
+    position: relative;
+    display: inline-block;
+}
+
+/* Tooltip text */
+    .sn-tooltip .sn-tooltiptext[b-haxcgtpc63] {
+        visibility: hidden;
+        min-width: 200px;
+        width: 300px;
+        background-color: darkslategray;
+        color: #f5f5f5;
+        text-align: center;
+        border-radius: 4px;
+        border: 1px solid darkgray;
+        padding: 5px 0;
+        /* Position the tooltip */
+        position: absolute;
+        z-index: 1;
+       
+    }
+
+/* Position the first tooltip */
+
+/* Position the second tooltip */
+.sn-tooltip .sn-tooltiptext.sn-tooltip-download[b-haxcgtpc63] {
+            bottom: 38%;
+            left: 110%;
+        }
+
+.sn-tooltip .sn-tooltiptext.sn-tooltip-snoteapp[b-haxcgtpc63] {
+            bottom: 62%;
+            left: 110%;
+        }
+
+/* Show tooltip on hover */
+.sn-tooltip:hover .sn-tooltiptext[b-haxcgtpc63],
+.sn-tooltip:focus .sn-tooltiptext[b-haxcgtpc63] {
+        visibility: visible;
+    }
 /* /Shared/MainLayout.razor.rz.scp.css */
 .page[b-ncs8hxfu00] {
     position: relative;
