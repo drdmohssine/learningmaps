@@ -728,6 +728,20 @@
     ],
     "tags": "default, cicd",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Azure-DevOps-jsFile.json"
+  },
+  {
+    "map_ID": "52",
+    "title": "Linux administration",
+    "description": "Linux administration involves managing and maintaining the operation of Linux-based systems, including configuration, security, troubleshooting, and performance optimization.",
+    "down_file": "https://onedrive.live.com/download?resid=FDA15E5C59A361A5%2112365&authkey=!AFT67UypyAOQOSw",
+    "images": [
+      {
+        "hashcode": "Wot1QOL"
+
+      }
+    ],
+    "tags": "default",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Linux-Administration-jsonFile.json"
   }
 
 
