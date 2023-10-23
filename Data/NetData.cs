@@ -24,7 +24,7 @@ namespace LearningMaps.Data
 
         public NetworkOptions EditorConstructionOptions(Network network)
         {
-
+            
             return new NetworkOptions
             {
                 Layout = new LayoutOptions()
