@@ -742,6 +742,20 @@
     ],
     "tags": "default",
     "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Linux-Administration-jsonFile.json"
+  },
+  {
+    "map_ID": "53",
+    "title": "Scikit-Learn",
+    "description": "Scikit-learn is a popular Python library for machine learning that offers a wide range of algorithms for classification, regression, clustering, and dimensionality reduction. It is known for its simplicity, ease of use, and flexibility.",
+    "down_file": "https://onedrive.live.com/download?resid=FDA15E5C59A361A5%2112369&authkey=!AGYGP3WEhpEgOBo",
+    "images": [
+      {
+        "hashcode": "rdPhZf8"
+
+      }
+    ],
+    "tags": "default, python, machine learning",
+    "GraphUrl": "https://raw.githubusercontent.com/snotesapp/LMStatics/main/Scikit-Learn-jsFile.json"
   }
 
 
