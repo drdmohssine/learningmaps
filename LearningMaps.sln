@@ -5,6 +5,8 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LearningMaps", "LearningMaps.csproj", "{BF42C271-62CA-4A5A-B61D-006526413824}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VisNetwork.Blazor", "..\..\..\Desktop\DockerVol\C#\VisNetwork.Blazor\src\VisNetwork.Blazor\VisNetwork.Blazor.csproj", "{61DC8DA2-6AAE-46B4-BDE9-C942BD441A43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BF42C271-62CA-4A5A-B61D-006526413824}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF42C271-62CA-4A5A-B61D-006526413824}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BF42C271-62CA-4A5A-B61D-006526413824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61DC8DA2-6AAE-46B4-BDE9-C942BD441A43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61DC8DA2-6AAE-46B4-BDE9-C942BD441A43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61DC8DA2-6AAE-46B4-BDE9-C942BD441A43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61DC8DA2-6AAE-46B4-BDE9-C942BD441A43}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

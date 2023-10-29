@@ -12,7 +12,10 @@
     <PackageReference Include="Blazored.LocalStorage" Version="4.4.0" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="7.0.12" />
     <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="7.0.12" PrivateAssets="all" />
-    <PackageReference Include="VisNetwork.Blazor" Version="2.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Desktop\DockerVol\C#\VisNetwork.Blazor\src\VisNetwork.Blazor\VisNetwork.Blazor.csproj" />
   </ItemGroup>
 
 </Project>
