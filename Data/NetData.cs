@@ -27,6 +27,7 @@ namespace LearningMaps.Data
             
             return new NetworkOptions
             {
+               
                 Layout = new LayoutOptions()
                 {
                     Hierarchical = new HierarchicalOptions()

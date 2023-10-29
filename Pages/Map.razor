@@ -4,6 +4,8 @@
 @using System.Reflection;
 @using VisNetwork.Blazor
 @using VisNetwork.Blazor.Models;
+@using VisNetwork.Blazor.Models.EdgesAndNodesInfo;
+@using VisNetwork.Blazor.Models.ViewPortModels;
 @inject IJSRuntime JSRuntime
 @inject MapsData MapsSvs
 @inject HttpClient Http
@@ -109,6 +111,22 @@
     int CurrentLevel;
     HttpClient GrphhttpClient = new HttpClient();
 
+    NetFocusOptions netFocusOptions = new NetFocusOptions()
+        {
+            Animation = new AnimationOptions()
+            {
+                Duration = 800,
+                EasingFunction = "linear"
+            },
+            Offset = new OffsetOptions()
+            {
+                X = 0,
+                Y = 0
+            },
+            Locked = true,
+
+            Scale = 1.2
+        };
 
     protected override async Task OnInitializedAsync()
     {
@@ -136,7 +154,7 @@
                 }
                 MapsSvs.FiltredMapsData = new List<MapData>(MapsSvs.MapsDatas.OrderByDescending(m => m.map_ID)).ToList();
 
-               
+
             }
         }
         catch (Exception ex)
@@ -170,7 +188,7 @@
         {
             Console.WriteLine(ex.Message);
         }
-        
+
         try
         {
             netData.data = new NetworkData();
@@ -237,12 +255,16 @@
                     Nodes = netData.nodes
                 };
 
+
             netData.NotifyStateChanged();
+
+
         }
         catch (Exception ex)
         {
             // Handle the exception appropriately
         }
+
 
     }
 
@@ -250,7 +272,7 @@
     {
         if (firstRender)
         {
-          
+
             try{
                 _MapJS = await JSRuntime.InvokeAsync<IJSObjectReference>("import", $"{Navigation.BaseUri}jscode/libraryInterop.js");
 
@@ -277,7 +299,7 @@
 
             }
 
-            
+
         }
 
 
@@ -285,8 +307,8 @@
 
     }
 
-   
-   
+
+
     private async Task RestGraph()
     {
         try
@@ -355,7 +377,14 @@
                     Nodes = netData.nodes
                 };
 
+
+
             netData.NotifyStateChanged();
+
+         
+
+
+
         }
         catch (Exception ex)
         {
@@ -364,7 +393,7 @@
 
     }
 
-    private void OnDoubleClickEvent<T>(string name, T eventArg)
+    private async Task OnDoubleClickEvent<T>(string name, T eventArg)
     {
         try
         {
@@ -394,6 +423,9 @@
 
                     Packet selectedPacket = graphproject.Packets.Where(p => p.PacketID == parentid).FirstOrDefault();
                     Packet firstChild = graphproject.Packets.Where(pr => pr.ParentID == selectedPacket.PacketID).FirstOrDefault();
+
+
+                  
 
                     if(firstChild is not null)
                     {
@@ -447,14 +479,21 @@
 
                             CurrentLevel = packets[0].Level;
 
+                            await Task.Delay(500);
+                            await netData.network.Focus(firstChild.PacketID.ToString(), netFocusOptions);
+                        }
+                        else
+                        {
+                            await Task.Delay(500);
+                            await netData.network.Focus(parentid.ToString(), netFocusOptions);
                         }
 
+                      
                     }
-                    
+
 
                     //  StateHasChanged();
-
-
+                   
 
 
                 }
