@@ -24,9 +24,10 @@ jobs:
       run: dotnet workload install wasm-tools
       
     - name: update custom nuget source
-      run: dotnet nuget update source MSNugetPkgFeed -u mspkguser -p 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq --store-password-in-clear-text
+      run: dotnet nuget update --configfile nuget.config -u mspkguser -p 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq --store-password-in-clear-text
     - name: Restore
       run: dotnet restore LearningMaps.csproj
+      
     # publishes Blazor project to the release-folder
     - name: Publish .NET 7 Project
       run: dotnet publish LearningMaps.csproj -c Release -o release --nologo
