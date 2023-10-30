@@ -18,13 +18,25 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 7.0.x
+
+    # Setup NuGet.exe
+    - uses: nuget/setup-nuget@v1
+      with:
+          nuget-version: '5.x'
+
+    # Configure NuGet for Azure Artifacts
+    - name: Configure NuGet for Azure Artifacts
+      run: nuget sources add -Name MSNugetPkgFeed -Source https://drdmohssine.pkgs.visualstudio.com/MSLibraries/_packaging/MSPkgFeed/nuget/v3/index.json -username mspkguser -password 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq 
+
+    # Restore NuGet packages
+    - name: Restore NuGet packages
+      run: nuget restore
+
     
     # Install wasm-tools
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
-      
-    - name: update custom nuget source
-      run: dotnet nuget update source MSPkgFeed -u mspkguser -p 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq --store-password-in-clear-text
+
       
     # publishes Blazor project to the release-folder
     - name: Publish .NET 7 Project
