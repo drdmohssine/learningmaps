@@ -24,7 +24,7 @@ jobs:
       run: dotnet workload install wasm-tools
       
     - name: update custom nuget source
-      run: dotnet nuget update --configfile nuget.config -u mspkguser -p 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq --store-password-in-clear-text
+      run: dotnet nuget update -s MSPkgFeed -u mspkguser -p 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq --store-password-in-clear-text
     - name: Restore
       run: dotnet restore LearningMaps.csproj
       
