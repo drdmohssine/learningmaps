@@ -23,7 +23,10 @@ jobs:
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
       
-
+    - name: Add custom nuget source
+      run: dotnet nuget sources add -Name MSNugetPkgFeed -Source https://drdmohssine.pkgs.visualstudio.com/MSLibraries/_packaging/MSPkgFeed/nuget/v3/index.json -username mspkguser -password 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq 
+    - name: Restore
+      run: dotnet restore LearningMaps.csproj
     # publishes Blazor project to the release-folder
     - name: Publish .NET 7 Project
       run: dotnet publish LearningMaps.csproj -c Release -o release --nologo
