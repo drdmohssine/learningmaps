@@ -25,7 +25,7 @@ jobs:
         dotnet-version: 7.0.x
 
     - name: Auth NuGet
-      run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }} --username mspkguser --password tmhwggzip7knwr2iqm7sdzvbxyitnccjn7s2esbrocgyaucdyvta --store-password-in-clear-text
+      run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }} --username mspkguser --password ${{ secrets.AZURE_DEVOPS_TOKEN }} --store-password-in-clear-text
     - name: Restore NuGet Packages
       run: dotnet restore ${{ env.solution_file_path }}
 
