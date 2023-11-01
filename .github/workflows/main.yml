@@ -4,7 +4,12 @@ name: Deploy learningmaps to GitHub Pages
 on:
   push:
     branches: [ master ]
-
+env:
+  solution_file: 'LearningMaps.csproj'
+  nuget_feed_name: 'GithubMSPkgFeed'
+  nuget_feed_source: 'https://drdmohssine.pkgs.visualstudio.com/MSLibraries/_packaging/MSPkgFeed/nuget/v3/index.json'
+  nuget_config: 'nuget.config'
+  
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
@@ -18,15 +23,18 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 7.0.x
+
+    - name: Auth NuGet
+      run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }} --username mspkguser --password 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq
+    - name: Restore NuGet Packages
+      run: dotnet restore ${{ env.solution_file_path }}
+
     
     # Install wasm-tools
     - name: Install wasm-tools
       run: dotnet workload install wasm-tools
+
       
-    - name: Add custom nuget source
-      run: dotnet nuget sources add -Name MSNugetPkgFeed -Source https://drdmohssine.pkgs.visualstudio.com/MSLibraries/_packaging/MSPkgFeed/nuget/v3/index.json -username mspkguser -password 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq 
-    - name: Restore
-      run: dotnet restore LearningMaps.csproj
     # publishes Blazor project to the release-folder
     - name: Publish .NET 7 Project
       run: dotnet publish LearningMaps.csproj -c Release -o release --nologo
