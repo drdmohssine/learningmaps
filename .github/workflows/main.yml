@@ -6,7 +6,7 @@ on:
     branches: [ master ]
 env:
   solution_file: 'LearningMaps.csproj'
-  nuget_feed_name: 'MSPkgFeed'
+  nuget_feed_name: 'GithubMSPkgFeed'
   nuget_feed_source: 'https://drdmohssine.pkgs.visualstudio.com/MSLibraries/_packaging/MSPkgFeed/nuget/v3/index.json'
   nuget_config: 'nuget.config'
   
