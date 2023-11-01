@@ -24,12 +24,8 @@ jobs:
       with:
         dotnet-version: 7.0.x
 
-    # Setup NuGet.exe
-    - uses: nuget/setup-nuget@v1
-      with:
-          nuget-version: '5.x'
-
-
+    - name: Auth NuGet
+      run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }} --username mspkguser --password 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq
     - name: Restore NuGet Packages
       run: dotnet restore ${{ env.solution_file_path }}
 
