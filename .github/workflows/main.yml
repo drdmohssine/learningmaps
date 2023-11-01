@@ -4,7 +4,12 @@ name: Deploy learningmaps to GitHub Pages
 on:
   push:
     branches: [ master ]
-
+env:
+  solution_file: 'LearningMaps.csproj'
+  nuget_feed_name: 'MSPkgFeed'
+  nuget_feed_source: 'https://drdmohssine.pkgs.visualstudio.com/MSLibraries/_packaging/MSPkgFeed/nuget/v3/index.json'
+ 
+  
 jobs:
   deploy-to-github-pages:
     # use ubuntu-latest image to run steps on
@@ -24,12 +29,11 @@ jobs:
       with:
           nuget-version: '5.x'
 
-    # Configure NuGet for Azure Artifacts
-    - name: update custom nuget source
-      run: dotnet nuget update source MSPkgFeed -u mspkguser -p 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq --store-password-in-clear-text
-    # Restore NuGet packages
-    - name: Restore NuGet packages
-      run: nuget restore
+    - name: Auth NuGet
+      run: dotnet nuget add source ${{ env.nuget_feed_source }} --name ${{ env.nuget_feed_name }} --username mspkguser --password 5yfizbrp52jr54x6wzueaarajpb6fqmc45zgvqpvvo2nkn7x5ueq
+     
+    - name: Restore NuGet Packages
+      run: dotnet restore ${{ env.solution_file_path }}
 
     
     # Install wasm-tools
